@@ -96,11 +96,35 @@ void AIC_ConfigurePins()
 **      
 **          
 */
-unsigned int AIC_Val()
+unsigned int AIC_Val(int val)
 {
-    return ADC_AnalogRead(2);    // Read the ADC Value for analog pin 2
+    return ADC_AnalogRead(val);    // Read the ADC Value for analog pin 2
 }
+/* ------------------------------------------------------------ */
+/***	AIC_Val_016
+**
+**	Parameters:
+**		
+**
+**	Return Value:
+**		unsigned int    - return a 0 to 16 value
+**
+**	Description:
+**		This function returns the digital value corresponding to the AIC analog 
+**      pin (thumbwheel potentiometer or analog input connectors labeled AIC)
+**      as the result of analog to digital conversion performed by the ADC module. 
+**      
+**          
+*/
 
+ int AIC_Val_016(int val)
+{
+    int value;
+    if (ADC_AnalogRead(val)<=150) value=0;
+    else if (ADC_AnalogRead(17)> 924) value =16;
+    else value = ((ADC_AnalogRead(val))/50)-2;
+    return value;
+}
 /* *****************************************************************************
  End of File
  */
