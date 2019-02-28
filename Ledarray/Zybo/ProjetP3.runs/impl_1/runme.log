@@ -1,0 +1,632 @@
+
+*** Running vivado
+    with args -log Master.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source Master.tcl -notrace
+
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source Master.tcl -notrace
+Command: link_design -top Master -part xc7z010clg400-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc]
+WARNING: [Vivado 12-584] No ports matched 'o_led[0]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:50]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:50]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_led[1]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:51]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:51]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_led[2]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:52]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:52]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_led[3]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:53]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:53]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_led6_r'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:66]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:66]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[0]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:192]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:192]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[1]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:193]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:193]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[2]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:194]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:194]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[3]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:195]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:195]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[4]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:196]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:196]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[5]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:197]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:197]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[6]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:198]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:198]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[7]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:199]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:199]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[0]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:214]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:214]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[1]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:215]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:215]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[2]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:216]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:216]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[3]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:217]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:217]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[4]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:218]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:218]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[5]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:219]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:219]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[6]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:220]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:220]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[7]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:221]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:221]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[8]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:235]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:235]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[9]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:236]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:236]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[10]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:237]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:237]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[11]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:238]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:238]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_DEL2'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:239]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:239]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_DEL3'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:240]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:240]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_S1'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:241]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:241]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_S2'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:242]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:242]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 578.543 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+7 Infos, 29 Warnings, 29 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 582.551 ; gain = 328.055
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z010'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.636 . Memory (MB): peak = 589.738 ; gain = 7.188
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 230b81dc2
+
+Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1121.676 ; gain = 531.938
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: 230b81dc2
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1217.039 ; gain = 0.000
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 0 cells
+
+Phase 2 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 2 Constant propagation | Checksum: 230b81dc2
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1217.039 ; gain = 0.000
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
+
+Phase 3 Sweep
+Phase 3 Sweep | Checksum: 1e7b5370c
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1217.039 ; gain = 0.000
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 0 cells
+
+Phase 4 BUFG optimization
+Phase 4 BUFG optimization | Checksum: 1e7b5370c
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1217.039 ; gain = 0.000
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 5 Shift Register Optimization
+Phase 5 Shift Register Optimization | Checksum: 1ce476e0f
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1217.039 ; gain = 0.000
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 6 Post Processing Netlist
+Phase 6 Post Processing Netlist | Checksum: 1ce476e0f
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 1217.039 ; gain = 0.000
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |               0  |               0  |                                              0  |
+|  Constant propagation         |               0  |               0  |                                              0  |
+|  Sweep                        |               0  |               0  |                                              0  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              0  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1217.039 ; gain = 0.000
+Ending Logic Optimization Task | Checksum: 1ce476e0f
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.032 . Memory (MB): peak = 1217.039 ; gain = 0.000
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+Ending Power Optimization Task | Checksum: 1ce476e0f
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1217.039 ; gain = 0.000
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 1ce476e0f
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1217.039 ; gain = 0.000
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1217.039 ; gain = 0.000
+Ending Netlist Obfuscation Task | Checksum: 1ce476e0f
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1217.039 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+23 Infos, 29 Warnings, 29 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 1217.039 ; gain = 634.488
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1217.039 ; gain = 0.000
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1217.039 ; gain = 0.000
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.083 . Memory (MB): peak = 1217.039 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.runs/impl_1/Master_opt.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_drc -file Master_drc_opted.rpt -pb Master_drc_opted.pb -rpx Master_drc_opted.rpx
+Command: report_drc -file Master_drc_opted.rpt -pb Master_drc_opted.pb -rpx Master_drc_opted.rpx
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2018.3/data/ip'.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Coretcl 2-168] The results of DRC are in file C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.runs/impl_1/Master_drc_opted.rpt.
+report_drc completed successfully
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z010'
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1217.039 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 129e9b585
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1217.039 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1217.039 ; gain = 0.000
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 14093ae30
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.373 . Memory (MB): peak = 1228.547 ; gain = 11.508
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 164ad9429
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.458 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 164ad9429
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.459 . Memory (MB): peak = 1236.195 ; gain = 19.156
+Phase 1 Placer Initialization | Checksum: 164ad9429
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.461 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 1672fa29d
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.548 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 2.2 Physical Synthesis In Placer
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-670] No setup violation found.  DSP Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  BRAM Register Optimization was not performed.
+INFO: [Physopt 32-949] No candidate nets found for HD net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1236.195 ; gain = 0.000
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                  |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+----------------------------------------------------------------------------------------------------------------------------------------
+|  Very High Fanout              |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                  |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register                |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  BRAM Register                 |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  HD Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                         |            0  |              0  |                     0  |           0  |           2  |  00:00:00  |
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.2 Physical Synthesis In Placer | Checksum: 1b2ff4bc9
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+Phase 2 Global Placement | Checksum: 19598d9d5
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 19598d9d5
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 104e121d6
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 12b754ab8
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: c40aacb2
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 3.5 Small Shape Detail Placement
+Phase 3.5 Small Shape Detail Placement | Checksum: 14f3c65fe
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 3.6 Re-assign LUT pins
+Phase 3.6 Re-assign LUT pins | Checksum: 13ea852fc
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 3.7 Pipeline Register Optimization
+Phase 3.7 Pipeline Register Optimization | Checksum: c811f8fe
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+Phase 3 Detail Placement | Checksum: c811f8fe
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 11c84c94e
+
+Phase 4.1.1.1 BUFG Insertion
+INFO: [Place 46-46] BUFG insertion identified 0 candidate nets, 0 success, 0 bufg driver replicated, 0 skipped for placement/routing, 0 skipped for timing, 0 skipped for netlist change reason
+Phase 4.1.1.1 BUFG Insertion | Checksum: 11c84c94e
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+INFO: [Place 30-746] Post Placement Timing Summary WNS=5.116. For the most accurate timing information please run report_timing.
+Phase 4.1.1 Post Placement Optimization | Checksum: 12f2af3cf
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+Phase 4.1 Post Commit Optimization | Checksum: 12f2af3cf
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 12f2af3cf
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 4.3 Placer Reporting
+Phase 4.3 Placer Reporting | Checksum: 12f2af3cf
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1236.195 ; gain = 0.000
+Phase 4.4 Final Placement Cleanup | Checksum: 12515fee5
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 12515fee5
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+Ending Placer Task | Checksum: e5d718ed
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1236.195 ; gain = 19.156
+INFO: [Common 17-83] Releasing license: Implementation
+52 Infos, 29 Warnings, 29 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1236.195 ; gain = 0.000
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.080 . Memory (MB): peak = 1240.043 ; gain = 3.848
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1240.043 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.runs/impl_1/Master_placed.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_io -file Master_io_placed.rpt
+report_io: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.062 . Memory (MB): peak = 1243.996 ; gain = 0.000
+INFO: [runtcl-4] Executing : report_utilization -file Master_utilization_placed.rpt -pb Master_utilization_placed.pb
+INFO: [runtcl-4] Executing : report_control_sets -verbose -file Master_control_sets_placed.rpt
+report_control_sets: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1243.996 ; gain = 0.000
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z010'
+Running DRC as a precondition to command route_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 2 CPUs
+Checksum: PlaceDB: 14dee0ce ConstDB: 0 ShapeSum: d0f8381f RouteDB: 0
+
+Phase 1 Build RT Design
+Phase 1 Build RT Design | Checksum: 191c11e1a
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1318.113 ; gain = 74.117
+Post Restoration Checksum: NetGraph: d787fd2c NumContArr: ba3920ee Constraints: 0 Timing: 0
+
+Phase 2 Router Initialization
+
+Phase 2.1 Create Timer
+Phase 2.1 Create Timer | Checksum: 191c11e1a
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1344.340 ; gain = 100.344
+
+Phase 2.2 Fix Topology Constraints
+Phase 2.2 Fix Topology Constraints | Checksum: 191c11e1a
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1350.371 ; gain = 106.375
+
+Phase 2.3 Pre Route Cleanup
+Phase 2.3 Pre Route Cleanup | Checksum: 191c11e1a
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1350.371 ; gain = 106.375
+ Number of Nodes with overlaps = 0
+
+Phase 2.4 Update Timing
+Phase 2.4 Update Timing | Checksum: 157b3a330
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1353.066 ; gain = 109.070
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=5.012  | TNS=0.000  | WHS=-0.060 | THS=-0.229 |
+
+Phase 2 Router Initialization | Checksum: 14a6dbac1
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1353.066 ; gain = 109.070
+
+Phase 3 Initial Routing
+Phase 3 Initial Routing | Checksum: 1a69b1acc
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.066 ; gain = 109.070
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=5.010  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 4.1 Global Iteration 0 | Checksum: 1a1c652b5
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.066 ; gain = 109.070
+Phase 4 Rip-up And Reroute | Checksum: 1a1c652b5
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.066 ; gain = 109.070
+
+Phase 5 Delay and Skew Optimization
+
+Phase 5.1 Delay CleanUp
+
+Phase 5.1.1 Update Timing
+Phase 5.1.1 Update Timing | Checksum: 2015e076b
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.066 ; gain = 109.070
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=5.159  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 5.1 Delay CleanUp | Checksum: 2015e076b
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.066 ; gain = 109.070
+
+Phase 5.2 Clock Skew Optimization
+Phase 5.2 Clock Skew Optimization | Checksum: 2015e076b
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.066 ; gain = 109.070
+Phase 5 Delay and Skew Optimization | Checksum: 2015e076b
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.066 ; gain = 109.070
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 1fe440e14
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.066 ; gain = 109.070
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=5.159  | TNS=0.000  | WHS=0.198  | THS=0.000  |
+
+Phase 6.1 Hold Fix Iter | Checksum: 158d081e1
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.066 ; gain = 109.070
+Phase 6 Post Hold Fix | Checksum: 158d081e1
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.066 ; gain = 109.070
+
+Phase 7 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0.0494088 %
+  Global Horizontal Routing Utilization  = 0.0179228 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 7 Route finalize | Checksum: 20393da7c
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1353.066 ; gain = 109.070
+
+Phase 8 Verifying routed nets
+
+ Verification completed successfully
+Phase 8 Verifying routed nets | Checksum: 20393da7c
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1354.813 ; gain = 110.816
+
+Phase 9 Depositing Routes
+Phase 9 Depositing Routes | Checksum: 1ec5576c3
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1354.813 ; gain = 110.816
+
+Phase 10 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=5.159  | TNS=0.000  | WHS=0.198  | THS=0.000  |
+
+INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
+Phase 10 Post Router Timing | Checksum: 1ec5576c3
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1354.813 ; gain = 110.816
+INFO: [Route 35-16] Router Completed Successfully
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1354.813 ; gain = 110.816
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+70 Infos, 29 Warnings, 29 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:00:14 ; elapsed = 00:00:12 . Memory (MB): peak = 1354.813 ; gain = 110.816
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1354.813 ; gain = 0.000
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.082 . Memory (MB): peak = 1355.031 ; gain = 0.219
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1355.031 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.runs/impl_1/Master_routed.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_drc -file Master_drc_routed.rpt -pb Master_drc_routed.pb -rpx Master_drc_routed.rpx
+Command: report_drc -file Master_drc_routed.rpt -pb Master_drc_routed.pb -rpx Master_drc_routed.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Coretcl 2-168] The results of DRC are in file C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.runs/impl_1/Master_drc_routed.rpt.
+report_drc completed successfully
+INFO: [runtcl-4] Executing : report_methodology -file Master_methodology_drc_routed.rpt -pb Master_methodology_drc_routed.pb -rpx Master_methodology_drc_routed.rpx
+Command: report_methodology -file Master_methodology_drc_routed.rpt -pb Master_methodology_drc_routed.pb -rpx Master_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 2 threads
+INFO: [Coretcl 2-1520] The results of Report Methodology are in file C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.runs/impl_1/Master_methodology_drc_routed.rpt.
+report_methodology completed successfully
+INFO: [runtcl-4] Executing : report_power -file Master_power_routed.rpt -pb Master_power_summary_routed.pb -rpx Master_power_routed.rpx
+Command: report_power -file Master_power_routed.rpt -pb Master_power_summary_routed.pb -rpx Master_power_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+82 Infos, 29 Warnings, 29 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+INFO: [runtcl-4] Executing : report_route_status -file Master_route_status.rpt -pb Master_route_status.pb
+INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -file Master_timing_summary_routed.rpt -pb Master_timing_summary_routed.pb -rpx Master_timing_summary_routed.rpx -warn_on_violation 
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+INFO: [runtcl-4] Executing : report_incremental_reuse -file Master_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
+INFO: [runtcl-4] Executing : report_clock_utilization -file Master_clock_utilization_routed.rpt
+INFO: [runtcl-4] Executing : report_bus_skew -warn_on_violation -file Master_bus_skew_routed.rpt -pb Master_bus_skew_routed.pb -rpx Master_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 2 CPUs
+Command: write_bitstream -force Master.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z010'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 2 threads
+WARNING: [DRC ZPS7-1] PS7 block required: The PS7 cell must be used in this Zynq design in order to enable correct default configuration.
+INFO: [Vivado 12-3199] DRC finished with 0 Errors, 1 Warnings
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+INFO: [Designutils 20-2272] Running write_bitstream with 2 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Writing bitstream ./Master.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Project 1-120] WebTalk data collection is mandatory when using a WebPACK part without a full Vivado license. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
+AccŠs refus‚.
+AccŠs refus‚.
+INFO: [Common 17-83] Releasing license: Implementation
+101 Infos, 30 Warnings, 29 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1779.688 ; gain = 390.082
+INFO: [Common 17-206] Exiting Vivado at Wed Feb 27 22:13:46 2019...

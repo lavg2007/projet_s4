@@ -1,0 +1,411 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Wed Feb 27 22:12:22 2019
+# Process ID: 11468
+# Current directory: C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.runs/synth_1
+# Command line: vivado.exe -log Master.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Master.tcl
+# Log file: C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.runs/synth_1/Master.vds
+# Journal file: C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source Master.tcl -notrace
+Command: synth_design -top Master -part xc7z010clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z010'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 22404 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 362.758 ; gain = 100.750
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'Master' [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/Master.vhd:16]
+	Parameter const_CLK_syst_MHz bound to: 125 - type: integer 
+INFO: [Synth 8-3491] module 'synchro_module_v2' declared at 'C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/imports/new/synchro_module_v2.vhd:40' bound to instance 'inst_synch' of component 'synchro_module_v2' [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/Master.vhd:73]
+INFO: [Synth 8-638] synthesizing module 'synchro_module_v2' [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/imports/new/synchro_module_v2.vhd:49]
+	Parameter const_CLK_syst_MHz bound to: 125 - type: integer 
+INFO: [Synth 8-113] binding component instance 'ClockBuffer' to cell 'BUFG' [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/imports/new/synchro_module_v2.vhd:85]
+INFO: [Synth 8-256] done synthesizing module 'synchro_module_v2' (1#1) [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/imports/new/synchro_module_v2.vhd:49]
+	Parameter const_CLK_MHz bound to: 5 - type: integer 
+INFO: [Synth 8-3491] module 'aff_matrice' declared at 'C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:7' bound to instance 'inst_aff_matrice' of component 'aff_matrice' [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/Master.vhd:77]
+INFO: [Synth 8-638] synthesizing module 'aff_matrice' [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:22]
+	Parameter const_CLK_MHz bound to: 5 - type: integer 
+WARNING: [Synth 8-6044] Case expression and choice expression width mismatch, Case expression is 4 wide and choice expression is 3 wide [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:61]
+WARNING: [Synth 8-6044] Case expression and choice expression width mismatch, Case expression is 4 wide and choice expression is 3 wide [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:62]
+WARNING: [Synth 8-6044] Case expression and choice expression width mismatch, Case expression is 4 wide and choice expression is 3 wide [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:63]
+WARNING: [Synth 8-6044] Case expression and choice expression width mismatch, Case expression is 4 wide and choice expression is 3 wide [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:64]
+WARNING: [Synth 8-6044] Case expression and choice expression width mismatch, Case expression is 4 wide and choice expression is 3 wide [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:65]
+WARNING: [Synth 8-6044] Case expression and choice expression width mismatch, Case expression is 4 wide and choice expression is 3 wide [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:66]
+WARNING: [Synth 8-6044] Case expression and choice expression width mismatch, Case expression is 4 wide and choice expression is 3 wide [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:67]
+WARNING: [Synth 8-6044] Case expression and choice expression width mismatch, Case expression is 4 wide and choice expression is 3 wide [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:68]
+WARNING: [Synth 8-614] signal 'C7' is read in the process but is not in the sensitivity list [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:58]
+WARNING: [Synth 8-614] signal 'C6' is read in the process but is not in the sensitivity list [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:58]
+WARNING: [Synth 8-614] signal 'C5' is read in the process but is not in the sensitivity list [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:58]
+WARNING: [Synth 8-614] signal 'C4' is read in the process but is not in the sensitivity list [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:58]
+WARNING: [Synth 8-614] signal 'C3' is read in the process but is not in the sensitivity list [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:58]
+WARNING: [Synth 8-614] signal 'C2' is read in the process but is not in the sensitivity list [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:58]
+WARNING: [Synth 8-614] signal 'C1' is read in the process but is not in the sensitivity list [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:58]
+WARNING: [Synth 8-614] signal 'C8' is read in the process but is not in the sensitivity list [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:58]
+INFO: [Synth 8-256] done synthesizing module 'aff_matrice' (2#1) [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/aff_matrice.vhd:22]
+INFO: [Synth 8-256] done synthesizing module 'Master' (3#1) [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/sources_1/new/Master.vhd:16]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 419.488 ; gain = 157.480
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 419.488 ; gain = 157.480
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 419.488 ; gain = 157.480
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z010clg400-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc]
+WARNING: [Vivado 12-584] No ports matched 'o_led[0]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:50]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:50]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_led[1]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:51]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:51]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_led[2]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:52]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:52]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_led[3]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:53]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:53]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_led6_r'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:66]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:66]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[0]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:192]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:192]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[1]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:193]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:193]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[2]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:194]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:194]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[3]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:195]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:195]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[4]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:196]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:196]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[5]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:197]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:197]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[6]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:198]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:198]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_pmodled[7]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:199]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:199]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[0]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:214]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:214]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[1]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:215]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:215]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[2]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:216]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:216]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[3]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:217]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:217]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[4]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:218]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:218]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[5]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:219]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:219]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[6]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:220]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:220]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[7]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:221]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:221]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[8]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:235]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:235]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[9]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:236]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:236]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[10]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:237]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:237]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_ADC_th[11]'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:238]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:238]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_DEL2'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:239]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:239]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'o_DEL3'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:240]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:240]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_S1'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:241]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:241]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i_S2'. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:242]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc:242]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.srcs/constrs_1/imports/new/circuit_labo_adder4b.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Master_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Master_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 745.645 ; gain = 0.000
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 745.645 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 745.645 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 745.645 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 745.645 ; gain = 483.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z010clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 745.645 ; gain = 483.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 745.645 ; gain = 483.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 745.645 ; gain = 483.637
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                5 Bit    Registers := 2     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module synchro_module_v2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      5 Bit       Adders := 2     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                5 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
+Module aff_matrice 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 80 (col length:40)
+BRAMs: 120 (col length: RAMB18 40 RAMB36 20)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 745.645 ; gain = 483.637
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 745.645 ; gain = 483.637
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 751.055 ; gain = 489.047
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 761.090 ; gain = 499.082
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 761.090 ; gain = 499.082
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 761.090 ; gain = 499.082
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 761.090 ; gain = 499.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 761.090 ; gain = 499.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 761.090 ; gain = 499.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 761.090 ; gain = 499.082
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     2|
+|2     |CARRY4 |     4|
+|3     |LUT1   |     3|
+|4     |LUT2   |     2|
+|5     |LUT3   |     5|
+|6     |LUT4   |     8|
+|7     |LUT5   |     7|
+|8     |LUT6   |     7|
+|9     |FDRE   |    27|
+|10    |IBUF   |     9|
+|11    |OBUF   |     8|
++------+-------+------+
+
+Report Instance Areas: 
++------+-------------------+------------------+------+
+|      |Instance           |Module            |Cells |
++------+-------------------+------------------+------+
+|1     |top                |                  |    82|
+|2     |  inst_aff_matrice |aff_matrice       |    50|
+|3     |  inst_synch       |synchro_module_v2 |    14|
++------+-------------------+------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 761.090 ; gain = 499.082
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 761.090 ; gain = 172.926
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 761.090 ; gain = 499.082
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 763.211 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+21 Infos, 45 Warnings, 29 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 763.211 ; gain = 509.832
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 763.211 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Francois Gauthier/Desktop/Ledarray/ProjetP3.runs/synth_1/Master.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Master_utilization_synth.rpt -pb Master_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Feb 27 22:12:48 2019...
