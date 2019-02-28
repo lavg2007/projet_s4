@@ -29,6 +29,7 @@ signal  nbenvois :   STD_LOGIC_VECTOR (3 downto 0):= (others => '0');--Counter d
 signal  segm :          STD_LOGIC_VECTOR (6 downto 0);   --Donnee a envoyer
 signal  STR  :          STD_LOGIC := '0';    --Strobe
 
+signal reset : std_logic_vector(6 downto 0):= (6 => '1', others => '0');
 
  
 begin
@@ -45,7 +46,7 @@ begin
            
            if(STR = '1') then
            
-               if(nbenvois = "111") then
+               if(nbenvois = "1000") then
                     nbenvois <= (others => '0');
                else 
                     nbenvois <= nbenvois + '1';
@@ -58,14 +59,17 @@ end process;
 inst_shift : process(nbenvois) --Selon le numero de l'envois, on gere une colonne differente
     begin
         case nbenvois is
-            when "000" => segm <= C7;
-            when "001" => segm <= C6;
-            when "010" => segm <= C5;
-            when "011" => segm <= C4;
-            when "100" => segm <= C3;
-            when "101" => segm <= C2;
-            when "110" => segm <= C1;
-            when "111" => segm <= C8;
+            when "000" => segm <= C8;
+            when "001" => segm <= C7;
+            when "010" => segm <= C6;
+            when "011" => segm <= C5;
+            when "100" => segm <= C4;
+            when "101" => segm <= C3;
+            when "110" => segm <= C2;
+            when "111" => segm <= C1;
+            when "1000"=> segm <=reset;
+            when others=> segm <="0000000";
+            
         end case;
   
 end process;        
