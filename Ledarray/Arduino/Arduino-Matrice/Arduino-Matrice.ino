@@ -66,14 +66,19 @@ void loadingarray(){
   byte L5 = digitalRead(A3);
   byte L6 = digitalRead(A4);
 
-  //Modification de la matrice
-  bitmap_1[0+i]   = L0;
-  bitmap_1[8+i]   = L1;
-  bitmap_1[16+i]  = L2;
-  bitmap_1[24+i]  = L3;
-  bitmap_1[32+i]  = L4;
-  bitmap_1[40+i]  = L5;
-  bitmap_1[48+i]  = L6;
-  
-  i++;
+  if(L6 == 1 && L5 == 0 && L4 == 0 && L3 == 0 && L2 == 0 && L1 == 0 && L0 == 0){
+    i = 0;
+  }
+  else{
+    //Modification de la matrice
+    bitmap_1[0+i]   = L0;
+    bitmap_1[8+i]   = L1;
+    bitmap_1[16+i]  = L2;
+    bitmap_1[24+i]  = L3;
+    bitmap_1[32+i]  = L4;
+    bitmap_1[40+i]  = L5;
+    bitmap_1[48+i]  = L6;
+
+    i++;
+  }
 }
