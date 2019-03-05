@@ -407,7 +407,8 @@ void CETest_ExitPMODB()
 void CETest_InitAUDIO()
 {
     LCD_WriteStringAtPos("AUDIO test        ", 1, 0);
-    AUDIO_Init(0);
+//    AUDIO_Init(0);
+    AUDIO_Init(0,0);
 }
 
 

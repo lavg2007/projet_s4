@@ -74,7 +74,7 @@ unsigned short rgSinSamples[] = {
 
 // the definitions for the SOUND and SINE frequencies, to be used when Timer3 is configured in specific modes. 
 #define TMR_FREQ_SOUND   16000 // 16 kHz
-#define TMR_FREQ_SINE   48000 // 48 kHz
+//#define TMR_FREQ_SINE   48000 // 48 kHz
 
 
 /* ------------------------------------------------------------ */
@@ -150,7 +150,8 @@ void __ISR(_TIMER_3_VECTOR, IPL7AUTO) Timer3ISR(void)
 **      The timer period constant is computed using TMR_FREQ_SINE and TMR_FREQ_SOUND definitions (located in this source file)
 **      and peripheral bus frequency definition (PB_FRQ, located in config.h).
 */
-void AUDIO_Init(unsigned char bMode)
+//void AUDIO_Init(unsigned char bMode)
+void AUDIO_Init(unsigned char bMode, int TMR_FREQ_SINE)
 {   
     // close the timer and OC if the AUDIO_Init function is called when the AUDIO is already initialized
     if(bAudioMode != -1)
