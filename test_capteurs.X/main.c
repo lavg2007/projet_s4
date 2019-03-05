@@ -52,7 +52,7 @@ void main() {
          SSD_Init();
          SSD_WriteDigits(16,6,1,1);
          
-         DelayAprox10Us(10000);
+         DelayAprox10Us(10100);
          SSD_Close();
          }
         DelayAprox10Us(100);
