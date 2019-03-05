@@ -117,14 +117,7 @@ unsigned int AIC_Val(int val)
 **          
 */
 
- int AIC_Val_016(int val)
-{
-    int value;
-    if (ADC_AnalogRead(val)<=150) value=0;
-    else if (ADC_AnalogRead(17)> 924) value =16;
-    else value = ((ADC_AnalogRead(val))/50)-2;
-    return value;
-}
+
 /* *****************************************************************************
  End of File
  */

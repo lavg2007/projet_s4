@@ -21,7 +21,7 @@ void AIC_Init();
 unsigned int AIC_Val(int val);
 //private functions:
 void AIC_ConfigurePins();
-int AIC_Val_016(int val);
+
 //#ifdef __cplusplus
 //extern "C" {
 //#endif

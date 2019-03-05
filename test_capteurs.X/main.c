@@ -16,9 +16,9 @@ void lcdBlocks(char line, int num)
         int j;
          for (j=0 ;j < num; j++)
     {
-       DelayAprox10Us(100);
+//       DelayAprox10Us(100);
        LCD_WriteStringAtPos(string, line, j);
-       DelayAprox10Us(100);
+//       DelayAprox10Us(100);
         
     }
     
@@ -26,37 +26,43 @@ void lcdBlocks(char line, int num)
 }
 
 void main() {
-      AIC_Init();
       LED_Init();
-//      ADC_Init();
-    LCD_Init();
-    PMODS_InitPin(0,8,1,0,0);
-    PMODS_InitPin(0,9,1,0,0);
+      RGBLED_Init();
+      BTN_Init();
+      
+      ADC_Init();
+      LCD_Init();
     int cap1,cap2;
     int past_cap1,past_cap2 =0;
     int count =0;
 //    char btn = '0';
     char cap1str[40];
     while(1)
-    {   BTN_Init();
+    {   
 //        LCD_DisplayClear();
         DelayAprox10Us(100);
 //        if (ADC_AnalogRead(17)<150) cap1=0;
 //        else if (ADC_AnalogRead(17)> 950) cap1 =950;
 //        else cap1 = ADC_AnalogRead(17);
-        cap1 = AIC_Val_016(17);
+        cap1 = ADC_Val_016(17);
          lcdBlocks(0, cap1);
         
-        
-        
+         if (BTN_GetValue('d')==1)
+         {
+         SSD_Init();
+         SSD_WriteDigits(16,6,1,1);
+         
+         DelayAprox10Us(10000);
+         SSD_Close();
+         }
         DelayAprox10Us(100);
 //        sprintf( cap1str, "Capteur 1: %d", cap1 );
 //        LCD_WriteStringAtPos(cap1str, 1, 0);
-        cap2 = AIC_Val_016(18);
+        cap2 = ADC_Val_016(18);
         lcdBlocks(1, cap2);
         
-        DelayAprox10Us(5000);
-        
+//        DelayAprox10Us(5000);
+        RGBLED_SetValue(255,35,0);
         if (past_cap1 > cap1)
         {
             LCD_DisplayClear();
@@ -69,7 +75,7 @@ void main() {
         past_cap1 = cap1;
         past_cap2 = cap2;
 //        btn ='1'; //BTN_GetValue('D');
-        DelayAprox10Us(5000);
+//        DelayAprox10Us(5000);
 //        if (btn=='1')
 //        {
 //            LCD_DisplayClear();

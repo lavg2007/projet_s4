@@ -365,7 +365,7 @@ void SSD_Close()
     lat_SSD_AN1 = 1; // deactivate digit 1;
     lat_SSD_AN2 = 1; // deactivate digit 2;    
     lat_SSD_AN3 = 1; // deactivate digit 3;   
-    lat_SSD_AN0 = 1; // deactivate digit 0;
+    lat_SSD_AN0 = 0; // deactivate digit 0;
 }
 
 /* *****************************************************************************

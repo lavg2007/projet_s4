@@ -87,7 +87,14 @@ unsigned int ADC_AnalogRead(unsigned char analogPIN)
     IEC0bits.T2IE = 1;
     return adc_val;
 }
-
+ int ADC_Val_016(int val)
+{
+    int value;
+    if (ADC_AnalogRead(val)<=150) value=0;
+    else if (ADC_AnalogRead(val)> 924) value =16;
+    else value = ((ADC_AnalogRead(val))/50)-2;
+    return value;
+}
 /* *****************************************************************************
  End of File
  */
