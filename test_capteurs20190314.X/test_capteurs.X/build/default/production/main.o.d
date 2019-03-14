@@ -1,3 +1,4 @@
 build/default/production/main.o:  \
 main.c  \
-aic.h 
+aic.h  \
+timer.h 

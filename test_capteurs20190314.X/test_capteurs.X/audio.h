@@ -19,7 +19,7 @@
 
 void AUDIO_ConfigurePins();
 //void AUDIO_Init(unsigned char bMode);
-void AUDIO_Init(unsigned char bMode, int TMR_FREQ_SINE);
+void AUDIO_Init(unsigned char bMode, unsigned short buffer, int TMR_FREQ_SINE);
 void AUDIO_Close();
 
 

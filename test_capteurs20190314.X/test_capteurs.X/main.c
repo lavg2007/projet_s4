@@ -8,10 +8,59 @@
 #include <stdint.h>
 #include <xc.h>
 #include "aic.h"
+#include "timer.h"
+#include "math.h"
 #define BAUD_RATE 9600
 #define RECEIVE_BUFFER_LEN  1024
+#define RECORD_SIZE 2*30720
+
+int phase = 0;
+int sine_out = 0;
+const int freq = 1000;
+const int fs = 16000;
+unsigned short rgAudioBuf[RECORD_SIZE];
+
+#define _TMR2
+
+// Board clock = 8 MHz
+// Setting T1_INTR_RATE to 10000 means the timer will 
+// fire every: 8Mhz/2*20/8/1/T1_INTR_RATE = 1ms
+// See: Unit 2 - Elements of Real-time Systems / Unit 2 for more information
+#define T2_INTR_RATE 10000000/fs
+
+void initialize_timer_interrupt() { 
+    // Refer to : https://reference.digilentinc.com/_media/learn/courses/unit-2/unit_2.pdf 
+    // for more information
+    INTConfigureSystem(INT_SYSTEM_CONFIG_MULT_VECTOR);
+    INTEnableInterrupts();
+    LCD_Init();
+    int sample = 0;
+    OpenTimer2( (T2_ON | T2_SOURCE_INT | T2_PS_1_1), (T2_INTR_RATE - 1) ); 
+    mT2SetIntPriority(1);        
+    mT2SetIntSubPriority(0);       
+    mT2IntEnable(1);        
+} 
+
+
+void __ISR(_TIMER_2_VECTOR, IPL2SOFT) Timer2Handler(void) {	
+    phase = phase + freq/fs;
+    sine_out = sin(2*M_PI*phase);
+    rgAudioBuf[sample] = (sine_out + 1)*(2^7);
+    sample += 1;
+    if(sample == RECORD_SIZE)
+    {
+        LCD_WriteStringAtPos("test",0,0);
+        AUDIO_Init(3,rgAudioBuf,0);
+        sample = 0;
+    }
+    mT2ClearIntFlag();	// Macro function to clear the interrupt flag
+}
 
 //void lcdBlocks(char line, int num2)
+
+
+
+
 void lcdBlocks(int num1, int num2)
 {unsigned char string1[2] = {0xff,'\0'};
         int j;
@@ -146,7 +195,7 @@ void main() {
         stabValue1_16 = val_016(stabValue1);//valeur 0-16
         stabValue2_16 = val_016(stabValue2);
         //check si faut clear le display
-        Clear(stabValue1_16,stabValue2_16,past_cap1,past_cap2);
+        //Clear(stabValue1_16,stabValue2_16,past_cap1,past_cap2);
         
         //on save la derniere valeur pour faire des comparaisons plus tar
         past_cap1 = stabValue1_16;
@@ -154,7 +203,7 @@ void main() {
         
         
         //update du display
-        lcdBlocks(stabValue1_16,stabValue2_16);
+        //lcdBlocks(stabValue1_16,stabValue2_16);
         
         //Envoie de la valeur par UART pour la lire avec python
         sprintf(buff, "%04d;%04d", stabValue1, stabValue2);

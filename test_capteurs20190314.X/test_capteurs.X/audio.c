@@ -151,7 +151,7 @@ void __ISR(_TIMER_3_VECTOR, IPL7AUTO) Timer3ISR(void)
 **      and peripheral bus frequency definition (PB_FRQ, located in config.h).
 */
 //void AUDIO_Init(unsigned char bMode)
-void AUDIO_Init(unsigned char bMode, int TMR_FREQ_SINE)
+void AUDIO_Init(unsigned char bMode, unsigned short buffer, int TMR_FREQ_SINE)
 {   
     // close the timer and OC if the AUDIO_Init function is called when the AUDIO is already initialized
     if(bAudioMode != -1)
@@ -182,7 +182,7 @@ void AUDIO_Init(unsigned char bMode, int TMR_FREQ_SINE)
         case 3:
             // playback sound
             PR3 = (int)((float)((float)PB_FRQ/TMR_FREQ_SOUND) + 0.5);  
-            AUDIO_InitPlayBack(rgAudioBuf, RECORD_SIZE);
+            AUDIO_InitPlayBack(buffer, RECORD_SIZE);
             break;        
     }
     TMR3 = 0;
