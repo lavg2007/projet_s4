@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Program%20Files%20(x86)/Microchip/xc32/v2.15/pic32mx/lib/crt0.S</file>
-            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/repo/projet_s4/test_capteurs.X/newmain.c</file>
-            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/repo/projet_s4/test_capteurs.X/rgbled.c</file>
-            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/repo/projet_s4/test_capteurs.X/pmods.c</file>
-            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/repo/projet_s4/test_capteurs.X/utils.c</file>
+            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/repo/projet_s4/test_capteurs.X/main.c</file>
             <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/repo/projet_s4/test_capteurs.X/adc.c</file>
-            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/repo/projet_s4/test_capteurs.X/lcd.c</file>
         </group>
     </open-files>
 </project-private>
