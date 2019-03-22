@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Utilisateur/Documents/Universite/Session%204/Projet/test_capteurs.X/main.c</file>
-            <file>file:/C:/Users/Utilisateur/Documents/Universite/Session%204/Projet/test_capteurs.X/adc.c</file>
+            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/projet_s4/Génerateur/MPLAB%20Démo%201/test_capteurs20190314.X/test_capteurs.X/hardware.h</file>
+            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/projet_s4/Génerateur/MPLAB%20Démo%201/test_capteurs20190314.X/test_capteurs.X/Makefile</file>
+            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/projet_s4/Génerateur/MPLAB%20Démo%201/test_capteurs20190314.X/test_capteurs.X/nbproject/Makefile-default.mk</file>
+            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/projet_s4/Génerateur/MPLAB%20Démo%201/test_capteurs20190314.X/test_capteurs.X/pin_manager.h</file>
+            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/projet_s4/Génerateur/MPLAB%20Démo%201/test_capteurs20190314.X/test_capteurs.X/uart.c</file>
+            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/projet_s4/Génerateur/MPLAB%20Démo%201/test_capteurs20190314.X/test_capteurs.X/mcc.h</file>
+            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/projet_s4/Génerateur/MPLAB%20Démo%201/test_capteurs20190314.X/test_capteurs.X/main.c</file>
+            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/projet_s4/Génerateur/MPLAB%20Démo%201/test_capteurs20190314.X/test_capteurs.X/swDelay.h</file>
+            <file>file:/C:/Users/Gabriel/Documents/Uni/S4/Projet/projet_s4/Génerateur/MPLAB%20Démo%201/test_capteurs20190314.X/test_capteurs.X/timer.h</file>
         </group>
     </open-files>
 </project-private>

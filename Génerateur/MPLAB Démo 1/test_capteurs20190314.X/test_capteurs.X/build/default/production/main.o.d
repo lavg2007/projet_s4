@@ -1,4 +1,10 @@
 build/default/production/main.o:  \
 main.c  \
+hardware.h  \
 aic.h  \
-timer.h 
+timer.h  \
+mcc.h  \
+ pin_manager.h  \
+oc1.h  \
+interrupt_manager.h  \
+swDelay.h 

@@ -11,11 +11,7 @@
       <itemPath>IrDA.h</itemPath>
       <itemPath>acl.h</itemPath>
       <itemPath>config.h</itemPath>
-      <itemPath>audio.h</itemPath>
-      <itemPath>spiflash.h</itemPath>
-      <itemPath>mic.h</itemPath>
       <itemPath>aic.h</itemPath>
-      <itemPath>statemachine.h</itemPath>
       <itemPath>pmods.h</itemPath>
       <itemPath>utils.h</itemPath>
       <itemPath>rgbled.h</itemPath>
@@ -29,6 +25,11 @@
       <itemPath>btn.h</itemPath>
       <itemPath>swt.h</itemPath>
       <itemPath>timer.h</itemPath>
+      <itemPath>pin_manager.h</itemPath>
+      <itemPath>oc1.h</itemPath>
+      <itemPath>mcc.h</itemPath>
+      <itemPath>interrupt_manager.h</itemPath>
+      <itemPath>swDelay.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -37,9 +38,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>mic.c</itemPath>
       <itemPath>i2c.c</itemPath>
-      <itemPath>config_bits.c</itemPath>
       <itemPath>acl.c</itemPath>
       <itemPath>lcd.c</itemPath>
       <itemPath>pmods.c</itemPath>
@@ -50,18 +49,20 @@
       <itemPath>aic.c</itemPath>
       <itemPath>PICmx370.c</itemPath>
       <itemPath>mot.c</itemPath>
-      <itemPath>audio.c</itemPath>
       <itemPath>rgbled.c</itemPath>
-      <itemPath>spiflash.c</itemPath>
       <itemPath>spija.c</itemPath>
       <itemPath>srv.c</itemPath>
       <itemPath>ssd.c</itemPath>
-      <itemPath>statemachine.c</itemPath>
       <itemPath>swt.c</itemPath>
       <itemPath>uart.c</itemPath>
       <itemPath>uartjb.c</itemPath>
       <itemPath>utils.c</itemPath>
       <itemPath>main.c</itemPath>
+      <itemPath>interrupt_manager.c</itemPath>
+      <itemPath>mcc.c</itemPath>
+      <itemPath>oc1.c</itemPath>
+      <itemPath>pin_manager.c</itemPath>
+      <itemPath>swDelay.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -71,6 +72,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>.</Elem>
+    <Elem>../../../../../../../../../Downloads/S4GE-APP5-Problematique_X/S4GE-APP5-Problematique.X/mcc_generated_files</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -86,7 +88,7 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32MX_DFP" vendor="Microchip" version="1.0.25"/>
+        <pack name="PIC32MX_DFP" vendor="Microchip" version="1.0.28"/>
       </packs>
       <compileType>
         <linkerTool>

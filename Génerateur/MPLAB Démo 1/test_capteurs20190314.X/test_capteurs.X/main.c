@@ -7,18 +7,26 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <xc.h>
+#include "hardware.h"
 #include "aic.h"
 #include "timer.h"
 #include "math.h"
+#include "mcc.h"
+#include "fftc.h"
+#include "swDelay.h"
+
 #define BAUD_RATE 9600
 #define RECEIVE_BUFFER_LEN  1024
-#define RECORD_SIZE 2*30720
+#define SIG_LEN 1024
 
 int phase = 0;
-int sine_out = 0;
+int sine = 0;
 const int freq = 1000;
 const int fs = 16000;
-unsigned short rgAudioBuf[RECORD_SIZE];
+int32_t buffer[SIG_LEN];
+int32_t pastbuffer[SIG_LEN];
+int32_t sampleCount = 0;
+short swapBuffers;
 
 #define _TMR2
 
@@ -34,7 +42,6 @@ void initialize_timer_interrupt() {
     INTConfigureSystem(INT_SYSTEM_CONFIG_MULT_VECTOR);
     INTEnableInterrupts();
     LCD_Init();
-    int sample = 0;
     OpenTimer2( (T2_ON | T2_SOURCE_INT | T2_PS_1_1), (T2_INTR_RATE - 1) ); 
     mT2SetIntPriority(1);        
     mT2SetIntSubPriority(0);       
@@ -44,16 +51,16 @@ void initialize_timer_interrupt() {
 
 void __ISR(_TIMER_2_VECTOR, IPL2SOFT) Timer2Handler(void) {	
     phase = phase + freq/fs;
-    sine_out = sin(2*M_PI*phase);
-    rgAudioBuf[sample] = (sine_out + 1)*(2^7);
-    sample += 1;
-    if(sample == RECORD_SIZE)
-    {
-        LCD_WriteStringAtPos("test",0,0);
-        AUDIO_Init(3,rgAudioBuf,0);
-        sample = 0;
-    }
+    sine = sin(2*M_PI*phase);
+    buffer[sampleCount] = (sine + 1)*(2^8);
     mT2ClearIntFlag();	// Macro function to clear the interrupt flag
+    if (++sampleCount >= SIG_LEN) {
+        sampleCount = 0;
+        swapBuffers = 1;
+        BIN2(1);
+        usDelay(1);
+        BIN2(0);
+    }
 }
 
 //void lcdBlocks(char line, int num2)
@@ -175,7 +182,7 @@ void main() {
     
     while(1)
     {   
-        AUDIO_Init('0',moyennecap1+1);
+        //AUDIO_Init('0',moyennecap1+1);
 
         
          if (BTN_GetValue('d')==1)
@@ -185,6 +192,10 @@ void main() {
          }
          else{RGBLED_SetValue(255,35,0);}
 
+        if (swapBuffers)
+        {
+        
+        }
         
         //test pour faire un integrateur fuyant au lieu de faire une moyenne
         //on trouve les nouvelles valeurs

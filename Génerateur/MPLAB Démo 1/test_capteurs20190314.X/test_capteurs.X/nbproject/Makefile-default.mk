@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=mic.c i2c.c config_bits.c acl.c lcd.c pmods.c IrDA.c adc.c btn.c led.c aic.c PICmx370.c mot.c audio.c rgbled.c spiflash.c spija.c srv.c ssd.c statemachine.c swt.c uart.c uartjb.c utils.c main.c
+SOURCEFILES_QUOTED_IF_SPACED=i2c.c acl.c lcd.c pmods.c IrDA.c adc.c btn.c led.c aic.c PICmx370.c mot.c rgbled.c spija.c srv.c ssd.c swt.c uart.c uartjb.c utils.c main.c interrupt_manager.c mcc.c oc1.c pin_manager.c swDelay.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mic.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/config_bits.o ${OBJECTDIR}/acl.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/pmods.o ${OBJECTDIR}/IrDA.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/btn.o ${OBJECTDIR}/led.o ${OBJECTDIR}/aic.o ${OBJECTDIR}/PICmx370.o ${OBJECTDIR}/mot.o ${OBJECTDIR}/audio.o ${OBJECTDIR}/rgbled.o ${OBJECTDIR}/spiflash.o ${OBJECTDIR}/spija.o ${OBJECTDIR}/srv.o ${OBJECTDIR}/ssd.o ${OBJECTDIR}/statemachine.o ${OBJECTDIR}/swt.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/uartjb.o ${OBJECTDIR}/utils.o ${OBJECTDIR}/main.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/mic.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/config_bits.o.d ${OBJECTDIR}/acl.o.d ${OBJECTDIR}/lcd.o.d ${OBJECTDIR}/pmods.o.d ${OBJECTDIR}/IrDA.o.d ${OBJECTDIR}/adc.o.d ${OBJECTDIR}/btn.o.d ${OBJECTDIR}/led.o.d ${OBJECTDIR}/aic.o.d ${OBJECTDIR}/PICmx370.o.d ${OBJECTDIR}/mot.o.d ${OBJECTDIR}/audio.o.d ${OBJECTDIR}/rgbled.o.d ${OBJECTDIR}/spiflash.o.d ${OBJECTDIR}/spija.o.d ${OBJECTDIR}/srv.o.d ${OBJECTDIR}/ssd.o.d ${OBJECTDIR}/statemachine.o.d ${OBJECTDIR}/swt.o.d ${OBJECTDIR}/uart.o.d ${OBJECTDIR}/uartjb.o.d ${OBJECTDIR}/utils.o.d ${OBJECTDIR}/main.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/i2c.o ${OBJECTDIR}/acl.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/pmods.o ${OBJECTDIR}/IrDA.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/btn.o ${OBJECTDIR}/led.o ${OBJECTDIR}/aic.o ${OBJECTDIR}/PICmx370.o ${OBJECTDIR}/mot.o ${OBJECTDIR}/rgbled.o ${OBJECTDIR}/spija.o ${OBJECTDIR}/srv.o ${OBJECTDIR}/ssd.o ${OBJECTDIR}/swt.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/uartjb.o ${OBJECTDIR}/utils.o ${OBJECTDIR}/main.o ${OBJECTDIR}/interrupt_manager.o ${OBJECTDIR}/mcc.o ${OBJECTDIR}/oc1.o ${OBJECTDIR}/pin_manager.o ${OBJECTDIR}/swDelay.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/acl.o.d ${OBJECTDIR}/lcd.o.d ${OBJECTDIR}/pmods.o.d ${OBJECTDIR}/IrDA.o.d ${OBJECTDIR}/adc.o.d ${OBJECTDIR}/btn.o.d ${OBJECTDIR}/led.o.d ${OBJECTDIR}/aic.o.d ${OBJECTDIR}/PICmx370.o.d ${OBJECTDIR}/mot.o.d ${OBJECTDIR}/rgbled.o.d ${OBJECTDIR}/spija.o.d ${OBJECTDIR}/srv.o.d ${OBJECTDIR}/ssd.o.d ${OBJECTDIR}/swt.o.d ${OBJECTDIR}/uart.o.d ${OBJECTDIR}/uartjb.o.d ${OBJECTDIR}/utils.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/interrupt_manager.o.d ${OBJECTDIR}/mcc.o.d ${OBJECTDIR}/oc1.o.d ${OBJECTDIR}/pin_manager.o.d ${OBJECTDIR}/swDelay.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/mic.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/config_bits.o ${OBJECTDIR}/acl.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/pmods.o ${OBJECTDIR}/IrDA.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/btn.o ${OBJECTDIR}/led.o ${OBJECTDIR}/aic.o ${OBJECTDIR}/PICmx370.o ${OBJECTDIR}/mot.o ${OBJECTDIR}/audio.o ${OBJECTDIR}/rgbled.o ${OBJECTDIR}/spiflash.o ${OBJECTDIR}/spija.o ${OBJECTDIR}/srv.o ${OBJECTDIR}/ssd.o ${OBJECTDIR}/statemachine.o ${OBJECTDIR}/swt.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/uartjb.o ${OBJECTDIR}/utils.o ${OBJECTDIR}/main.o
+OBJECTFILES=${OBJECTDIR}/i2c.o ${OBJECTDIR}/acl.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/pmods.o ${OBJECTDIR}/IrDA.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/btn.o ${OBJECTDIR}/led.o ${OBJECTDIR}/aic.o ${OBJECTDIR}/PICmx370.o ${OBJECTDIR}/mot.o ${OBJECTDIR}/rgbled.o ${OBJECTDIR}/spija.o ${OBJECTDIR}/srv.o ${OBJECTDIR}/ssd.o ${OBJECTDIR}/swt.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/uartjb.o ${OBJECTDIR}/utils.o ${OBJECTDIR}/main.o ${OBJECTDIR}/interrupt_manager.o ${OBJECTDIR}/mcc.o ${OBJECTDIR}/oc1.o ${OBJECTDIR}/pin_manager.o ${OBJECTDIR}/swDelay.o
 
 # Source Files
-SOURCEFILES=mic.c i2c.c config_bits.c acl.c lcd.c pmods.c IrDA.c adc.c btn.c led.c aic.c PICmx370.c mot.c audio.c rgbled.c spiflash.c spija.c srv.c ssd.c statemachine.c swt.c uart.c uartjb.c utils.c main.c
+SOURCEFILES=i2c.c acl.c lcd.c pmods.c IrDA.c adc.c btn.c led.c aic.c PICmx370.c mot.c rgbled.c spija.c srv.c ssd.c swt.c uart.c uartjb.c utils.c main.c interrupt_manager.c mcc.c oc1.c pin_manager.c swDelay.c
 
 
 CFLAGS=
@@ -106,23 +106,11 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/mic.o: mic.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/mic.o.d 
-	@${RM} ${OBJECTDIR}/mic.o 
-	@${FIXDEPS} "${OBJECTDIR}/mic.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/mic.o.d" -o ${OBJECTDIR}/mic.o mic.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
 ${OBJECTDIR}/i2c.o: i2c.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/i2c.o.d 
 	@${RM} ${OBJECTDIR}/i2c.o 
 	@${FIXDEPS} "${OBJECTDIR}/i2c.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/i2c.o.d" -o ${OBJECTDIR}/i2c.o i2c.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/config_bits.o: config_bits.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/config_bits.o.d 
-	@${RM} ${OBJECTDIR}/config_bits.o 
-	@${FIXDEPS} "${OBJECTDIR}/config_bits.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/config_bits.o.d" -o ${OBJECTDIR}/config_bits.o config_bits.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/acl.o: acl.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -184,23 +172,11 @@ ${OBJECTDIR}/mot.o: mot.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/mot.o 
 	@${FIXDEPS} "${OBJECTDIR}/mot.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/mot.o.d" -o ${OBJECTDIR}/mot.o mot.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
-${OBJECTDIR}/audio.o: audio.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/audio.o.d 
-	@${RM} ${OBJECTDIR}/audio.o 
-	@${FIXDEPS} "${OBJECTDIR}/audio.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/audio.o.d" -o ${OBJECTDIR}/audio.o audio.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
 ${OBJECTDIR}/rgbled.o: rgbled.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/rgbled.o.d 
 	@${RM} ${OBJECTDIR}/rgbled.o 
 	@${FIXDEPS} "${OBJECTDIR}/rgbled.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/rgbled.o.d" -o ${OBJECTDIR}/rgbled.o rgbled.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/spiflash.o: spiflash.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/spiflash.o.d 
-	@${RM} ${OBJECTDIR}/spiflash.o 
-	@${FIXDEPS} "${OBJECTDIR}/spiflash.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/spiflash.o.d" -o ${OBJECTDIR}/spiflash.o spiflash.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/spija.o: spija.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -219,12 +195,6 @@ ${OBJECTDIR}/ssd.o: ssd.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/ssd.o.d 
 	@${RM} ${OBJECTDIR}/ssd.o 
 	@${FIXDEPS} "${OBJECTDIR}/ssd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ssd.o.d" -o ${OBJECTDIR}/ssd.o ssd.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/statemachine.o: statemachine.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/statemachine.o.d 
-	@${RM} ${OBJECTDIR}/statemachine.o 
-	@${FIXDEPS} "${OBJECTDIR}/statemachine.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/statemachine.o.d" -o ${OBJECTDIR}/statemachine.o statemachine.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/swt.o: swt.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -256,24 +226,42 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/main.o 
 	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
-else
-${OBJECTDIR}/mic.o: mic.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/interrupt_manager.o: interrupt_manager.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/mic.o.d 
-	@${RM} ${OBJECTDIR}/mic.o 
-	@${FIXDEPS} "${OBJECTDIR}/mic.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/mic.o.d" -o ${OBJECTDIR}/mic.o mic.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	@${RM} ${OBJECTDIR}/interrupt_manager.o.d 
+	@${RM} ${OBJECTDIR}/interrupt_manager.o 
+	@${FIXDEPS} "${OBJECTDIR}/interrupt_manager.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/interrupt_manager.o.d" -o ${OBJECTDIR}/interrupt_manager.o interrupt_manager.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
+${OBJECTDIR}/mcc.o: mcc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mcc.o.d 
+	@${RM} ${OBJECTDIR}/mcc.o 
+	@${FIXDEPS} "${OBJECTDIR}/mcc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/mcc.o.d" -o ${OBJECTDIR}/mcc.o mcc.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/oc1.o: oc1.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/oc1.o.d 
+	@${RM} ${OBJECTDIR}/oc1.o 
+	@${FIXDEPS} "${OBJECTDIR}/oc1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/oc1.o.d" -o ${OBJECTDIR}/oc1.o oc1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/pin_manager.o: pin_manager.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pin_manager.o.d 
+	@${RM} ${OBJECTDIR}/pin_manager.o 
+	@${FIXDEPS} "${OBJECTDIR}/pin_manager.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/pin_manager.o.d" -o ${OBJECTDIR}/pin_manager.o pin_manager.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/swDelay.o: swDelay.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/swDelay.o.d 
+	@${RM} ${OBJECTDIR}/swDelay.o 
+	@${FIXDEPS} "${OBJECTDIR}/swDelay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/swDelay.o.d" -o ${OBJECTDIR}/swDelay.o swDelay.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+else
 ${OBJECTDIR}/i2c.o: i2c.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/i2c.o.d 
 	@${RM} ${OBJECTDIR}/i2c.o 
 	@${FIXDEPS} "${OBJECTDIR}/i2c.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/i2c.o.d" -o ${OBJECTDIR}/i2c.o i2c.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/config_bits.o: config_bits.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/config_bits.o.d 
-	@${RM} ${OBJECTDIR}/config_bits.o 
-	@${FIXDEPS} "${OBJECTDIR}/config_bits.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/config_bits.o.d" -o ${OBJECTDIR}/config_bits.o config_bits.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/acl.o: acl.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -335,23 +323,11 @@ ${OBJECTDIR}/mot.o: mot.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/mot.o 
 	@${FIXDEPS} "${OBJECTDIR}/mot.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/mot.o.d" -o ${OBJECTDIR}/mot.o mot.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
-${OBJECTDIR}/audio.o: audio.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/audio.o.d 
-	@${RM} ${OBJECTDIR}/audio.o 
-	@${FIXDEPS} "${OBJECTDIR}/audio.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/audio.o.d" -o ${OBJECTDIR}/audio.o audio.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
 ${OBJECTDIR}/rgbled.o: rgbled.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/rgbled.o.d 
 	@${RM} ${OBJECTDIR}/rgbled.o 
 	@${FIXDEPS} "${OBJECTDIR}/rgbled.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/rgbled.o.d" -o ${OBJECTDIR}/rgbled.o rgbled.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/spiflash.o: spiflash.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/spiflash.o.d 
-	@${RM} ${OBJECTDIR}/spiflash.o 
-	@${FIXDEPS} "${OBJECTDIR}/spiflash.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/spiflash.o.d" -o ${OBJECTDIR}/spiflash.o spiflash.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/spija.o: spija.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -370,12 +346,6 @@ ${OBJECTDIR}/ssd.o: ssd.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/ssd.o.d 
 	@${RM} ${OBJECTDIR}/ssd.o 
 	@${FIXDEPS} "${OBJECTDIR}/ssd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/ssd.o.d" -o ${OBJECTDIR}/ssd.o ssd.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/statemachine.o: statemachine.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/statemachine.o.d 
-	@${RM} ${OBJECTDIR}/statemachine.o 
-	@${FIXDEPS} "${OBJECTDIR}/statemachine.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/statemachine.o.d" -o ${OBJECTDIR}/statemachine.o statemachine.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/swt.o: swt.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -406,6 +376,36 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/interrupt_manager.o: interrupt_manager.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/interrupt_manager.o.d 
+	@${RM} ${OBJECTDIR}/interrupt_manager.o 
+	@${FIXDEPS} "${OBJECTDIR}/interrupt_manager.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/interrupt_manager.o.d" -o ${OBJECTDIR}/interrupt_manager.o interrupt_manager.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/mcc.o: mcc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mcc.o.d 
+	@${RM} ${OBJECTDIR}/mcc.o 
+	@${FIXDEPS} "${OBJECTDIR}/mcc.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/mcc.o.d" -o ${OBJECTDIR}/mcc.o mcc.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/oc1.o: oc1.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/oc1.o.d 
+	@${RM} ${OBJECTDIR}/oc1.o 
+	@${FIXDEPS} "${OBJECTDIR}/oc1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/oc1.o.d" -o ${OBJECTDIR}/oc1.o oc1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/pin_manager.o: pin_manager.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pin_manager.o.d 
+	@${RM} ${OBJECTDIR}/pin_manager.o 
+	@${FIXDEPS} "${OBJECTDIR}/pin_manager.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/pin_manager.o.d" -o ${OBJECTDIR}/pin_manager.o pin_manager.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/swDelay.o: swDelay.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/swDelay.o.d 
+	@${RM} ${OBJECTDIR}/swDelay.o 
+	@${FIXDEPS} "${OBJECTDIR}/swDelay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/swDelay.o.d" -o ${OBJECTDIR}/swDelay.o swDelay.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 

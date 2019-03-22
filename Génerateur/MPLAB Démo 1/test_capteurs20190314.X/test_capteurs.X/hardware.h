@@ -126,6 +126,8 @@ Set_BTNL_in(),Set_BTNR_in(),Set_BTNU_in(),Set_BTND_in(),Set_BTNC_in() )
 #define BNTD() PORTAbits.RA15
 #define BNTC() PORTFbits.RF0
 
+#define BIN1(a);    {if(a) LATEbits.LATE9 = 1; else LATEbits.LATE9 = 0;}
+#define BIN2(a);    {if(a) LATBbits.LATB5 = 1; else LATBbits.LATB5 = 0;}
 /* Macros to define the PIC pin values for the board LEDs */
 #define LED0_bit BIT_0 /* RA0 */
 #define LED1_bit BIT_1 /* RA1 */
