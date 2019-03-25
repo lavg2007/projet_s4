@@ -98,9 +98,23 @@ int moyenne(int * values, int nbrVal){
  int val_016(int val)       //Fonction écrite par Phil
 {
     int value;
-    if (val<=150) value=0;
-    else if (val> 924) value =16;
-    else value = (val/50)-2;
+    if (value<=150) value =0;
+	else if (value>150 && value<=200) value=1;
+	else if (value>200 && value<=250) value=2;
+	else if (value>250 && value<=300) value=3;
+	else if (value>300 && value<=350) value=4;
+	else if (value>350 && value<=400) value=5;
+	else if (value>150 && value<=450) value=6;
+	else if (value>450 && value<=500) value=7;
+	else if (value>150 && value<=550) value=8;
+	else if (value>550 && value<=600) value=9;
+	else if (value>150 && value<=650) value=10;
+	else if (value>650 && value<=700) value=11;
+	else if (value>150 && value<=750) value=12;
+	else if (value>750 && value<=800) value=13;
+	else if (value>150 && value<=850) value=14;
+	else if (value>850 && value<=900) value=15;
+	else value =16;
     return value;
 }
 
