@@ -23,9 +23,16 @@ int phase = 0;
 int sine = 0;
 const int freq = 1000;
 const int fs = 16000;
-int32_t buffer[SIG_LEN];
-int32_t pastbuffer[SIG_LEN];
-int32_t sampleCount = 0;
+int32_t* currentOutBuffer;
+int32_t* currentInBuffer;
+int32_t* pastOutBuffer;
+int32_t* pastInBuffer;
+
+int32_t inBuffer1[SIG_LEN];
+int32_t inBuffer2[SIG_LEN];
+int32_t outBuffer1[SIG_LEN];
+int32_t outBuffer2[SIG_LEN];
+int32_t sampleCount;
 short swapBuffers;
 
 #define _TMR2
@@ -34,7 +41,7 @@ short swapBuffers;
 // Setting T1_INTR_RATE to 10000 means the timer will 
 // fire every: 8Mhz/2*20/8/1/T1_INTR_RATE = 1ms
 // See: Unit 2 - Elements of Real-time Systems / Unit 2 for more information
-#define T2_INTR_RATE 10000000/fs
+#define T2_INTR_RATE 10000
 
 void initialize_timer_interrupt() { 
     // Refer to : https://reference.digilentinc.com/_media/learn/courses/unit-2/unit_2.pdf 
@@ -42,6 +49,8 @@ void initialize_timer_interrupt() {
     INTConfigureSystem(INT_SYSTEM_CONFIG_MULT_VECTOR);
     INTEnableInterrupts();
     LCD_Init();
+    currentInBuffer = inBuffer1;
+    sampleCount = 0;
     OpenTimer2( (T2_ON | T2_SOURCE_INT | T2_PS_1_1), (T2_INTR_RATE - 1) ); 
     mT2SetIntPriority(1);        
     mT2SetIntSubPriority(0);       
@@ -52,15 +61,19 @@ void initialize_timer_interrupt() {
 void __ISR(_TIMER_2_VECTOR, IPL2SOFT) Timer2Handler(void) {	
     phase = phase + freq/fs;
     sine = sin(2*M_PI*phase);
-    buffer[sampleCount] = (sine + 1)*(2^8);
-    mT2ClearIntFlag();	// Macro function to clear the interrupt flag
-    if (++sampleCount >= SIG_LEN) {
+    currentInBuffer[sampleCount] = (sine)*(2^9);
+    sampleCount += 1;
+    
+    if (sampleCount >= SIG_LEN) {
+        LED_ToggleValue(3);
         sampleCount = 0;
         swapBuffers = 1;
         BIN2(1);
         usDelay(1);
         BIN2(0);
+        
     }
+    mT2ClearIntFlag();	// Macro function to clear the interrupt flag
 }
 
 //void lcdBlocks(char line, int num2)
@@ -146,7 +159,7 @@ void main() {
       LED_Init();
       RGBLED_Init();
       BTN_Init();
-      
+      initialize_timer_interrupt();
       ADC_Init();
       LCD_Init();
       I2C_Init(1600); //initialisation de la communication I2c a 1600hz
@@ -192,9 +205,26 @@ void main() {
          }
          else{RGBLED_SetValue(255,35,0);}
 
-        if (swapBuffers)
+        if (swapBuffers == 1)
         {
-        
+            // Raise pin BIN1, oscilloscope timing measurements
+            BIN1(1);
+            LED_ToggleValue(2);
+            if (currentInBuffer == inBuffer1) {
+                currentInBuffer = inBuffer2;
+                currentOutBuffer = outBuffer2;
+                pastInBuffer = inBuffer1;
+                pastOutBuffer = outBuffer1;
+            } else {
+                currentInBuffer = inBuffer1;
+                currentOutBuffer = outBuffer1;
+                pastInBuffer = inBuffer2;
+                pastOutBuffer = outBuffer2;
+            }
+            
+            //OC1_PWMPulseWidthSet((((currentOutBuffer[sampleCount] + 512) * PR2) >> 10));
+            BIN1(0);
+            swapBuffers = 0;
         }
         
         //test pour faire un integrateur fuyant au lieu de faire une moyenne
@@ -217,10 +247,10 @@ void main() {
         //lcdBlocks(stabValue1_16,stabValue2_16);
         
         //Envoie de la valeur par UART pour la lire avec python
-        sprintf(buff, "%04d;%04d", stabValue1, stabValue2);
-        UART_PutString(buff);
+        //sprintf(buff, "%04d;%04d", stabValue1, stabValue2);
+        //UART_PutString(buff);
         
-        DelayAprox10Us(1000);
+        //DelayAprox10Us(1000);
         
 
         if (count == cstAvrg)
