@@ -49,8 +49,12 @@
 */
 
 #include <xc.h>
+#include <stdlib.h>
 #include "tmr2.h"
 #include "../hardware.h"
+#include "../demo1.h"
+#include <math.h>
+#include "../LUT_phase.h"
 /**
   Section: Data Type Definitions
 */
@@ -67,7 +71,8 @@
   Remarks:
     None.
 */
-static bool testBin;
+static bool binTest;
+
 typedef struct _TMR_OBJ_STRUCT
 {
     /* Timer Elapsed */
@@ -88,8 +93,8 @@ void TMR2_Initialize (void)
 {
     // TMR2 0; 
     TMR2 = 0x0;
-    // Period = 0.000001 s; Frequency = 2000000 Hz; PR2 2; 
-    PR2 = 0x2;
+    // Period = 0.000025 s; Frequency = 192000000 Hz; PR2 4800; 
+    PR2 = 0x12C0;
     // TCKPS 1:1; T32 16 Bit; TCS PBCLK; SIDL disabled; TGATE disabled; ON enabled; 
     T2CON = 0x8000;
 
@@ -104,22 +109,25 @@ void TMR2_Initialize (void)
 
 void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
 {
-
+    BIN1(1);
     //***User Area Begin
-
-    // ticker function call;
-    // ticker is 1 -> Callback function gets called everytime this ISR executes
-    TMR2_CallBack();
-    if(testBin)
+    /*if(binTest)
     {
-        testBin = false;
         BIN1(0);
+        binTest = false;
     }
     else
     {
-        testBin = true;
         BIN1(1);
-    }
+        binTest = true;
+    }*/
+    //phase = (phase + LUT_phase[500]) % 32768;
+    phase = fmodf(phase + LUT_phase[500],1);
+    sinOut = sin(2*M_PI*phase);
+    OC1_PWMPulseWidthSet(((int)(sinOut + 512 * PR2) >> 10));
+    
+    
+    BIN1(0);
     //***User Area End
 
     tmr2_obj.count++;
@@ -153,10 +161,6 @@ uint16_t TMR2_Counter16BitGet( void )
     return( TMR2 );
 }
 
-void __attribute__ ((weak)) TMR2_CallBack(void)
-{
-    // Add your custom callback code here
-}
 
 void TMR2_Start( void )
 {

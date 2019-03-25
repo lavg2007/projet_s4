@@ -74,7 +74,7 @@ void PIN_MANAGER_Initialize(void)
      * Setting the GPIO Direction SFR(s)
      ***************************************************************************/
     TRISA = 0xC6FF;
-    TRISB = 0xFFFF;
+    TRISB = 0xBFFF;
     TRISC = 0xF01E;
     TRISD = 0xFFFF;
     TRISE = 0x01FF;
@@ -119,6 +119,16 @@ void PIN_MANAGER_Initialize(void)
     ANSELE = 0x00F4;
     ANSELG = 0x03C0;
 
+    /****************************************************************************
+     * Set the PPS
+     ***************************************************************************/
+    SYSTEM_RegUnlock(); // unlock PPS
+    CFGCONbits.IOLOCK = 0;
+
+    RPB14Rbits.RPB14R = 0x000C;   //RB14->OC1:OC1;
+
+    CFGCONbits.IOLOCK = 1; // lock   PPS
+    SYSTEM_RegLock(); 
 
     
 }

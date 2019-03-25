@@ -18,6 +18,7 @@
       <itemPath>demo1.h</itemPath>
       <itemPath>swDelay.h</itemPath>
       <itemPath>led.h</itemPath>
+      <itemPath>LUT_phase.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

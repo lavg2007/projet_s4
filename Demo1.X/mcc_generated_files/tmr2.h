@@ -61,7 +61,6 @@
 
 #endif
 
-#define TMR2_INTERRUPT_TICKER_FACTOR    1
 
 /**
   Section: Interface Routines
@@ -203,23 +202,6 @@ void TMR2_Counter16BitSet ( uint16_t value );
 
 uint16_t TMR2_Counter16BitGet( void );
 
-/**
-  @Summary
-    Callback for timer interrupt.
-
-  @Description
-    This routine is callback for timer interrupt
-
-  @Param
-    None.
-
-  @Returns
-    None
- 
-  @Example 
-    Refer to the example of TMR2_Initialize();
-*/
-void TMR2_CallBack(void);
 
 /**
   @Summary

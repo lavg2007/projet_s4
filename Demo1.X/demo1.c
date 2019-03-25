@@ -53,7 +53,7 @@
 /*
                          Main application
  */
-const unsigned int freqSampling = 44100;
+const unsigned int freqSampling = 20000;
 const unsigned int freqTest = 1000;
 int32_t *currentInBuffer, *currentOutBuffer, bufferCount;
 bool swapBuffers;
@@ -70,7 +70,7 @@ int main(void)
     currentInBuffer = inBuffer1;
     currentOutBuffer = outBuffer1;
     SYSTEM_Initialize();
-    LED_Init();
+    
     LED_SetValue(6,1);
     
     

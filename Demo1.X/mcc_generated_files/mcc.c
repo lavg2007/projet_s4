@@ -51,15 +51,15 @@
 #pragma config IOL1WAY = ON    // Peripheral Pin Select Configuration->Allow only one reconfiguration
 
 // DEVCFG2
-#pragma config FPLLIDIV = DIV_10    // PLL Input Divider->10x Divider
+#pragma config FPLLIDIV = DIV_1    // PLL Input Divider->1x Divider
 #pragma config FPLLMUL = MUL_24    // PLL Multiplier->24x Multiplier
 #pragma config FPLLODIV = DIV_1    // System PLL Output Clock Divider->PLL Divide by 1
 
 // DEVCFG1
-#pragma config FNOSC = PRIPLL    // Oscillator Selection Bits->Primary Osc w/PLL (XT+,HS+,EC+PLL)
+#pragma config FNOSC = FRCPLL    // Oscillator Selection Bits->Fast RC Osc with PLL
 #pragma config FSOSCEN = ON    // Secondary Oscillator Enable->Enabled
 #pragma config IESO = ON    // Internal/External Switch Over->Enabled
-#pragma config POSCMOD = HS    // Primary Oscillator Configuration->HS osc mode
+#pragma config POSCMOD = OFF    // Primary Oscillator Configuration->Primary osc disabled
 #pragma config OSCIOFNC = OFF    // CLKO Output Signal Active on the OSCO Pin->Disabled
 #pragma config FPBDIV = DIV_1    // Peripheral Clock Divisor->Pb_Clk is Sys_Clk/1
 #pragma config FCKSM = CSDCMD    // Clock Switching and Monitor Selection->Clock Switch Disable, FSCM Disabled
@@ -101,6 +101,7 @@ void SYSTEM_Initialize(void)
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
     OC1_Initialize();
+    LED_Init();
     TMR2_Initialize();
     INTERRUPT_Initialize();
 
@@ -121,8 +122,8 @@ void SYSTEM_RegLock(void)
 void OSCILLATOR_Initialize(void)
 {
     SYSTEM_RegUnlock(); 
-    // CF no clock failure; COSC PRIPLL; PLLODIV DIV_1; PBDIVRDY disabled; SLOCK out of lock; FRCDIV FRC/1; SLPEN Idle on WAIT instruction; NOSC PRIPLL; PLLMULT MUL_24; SOSCEN disabled; PBDIV DIV_1; CLKLOCK unlocked; OSWEN Switch is Complete; SOSCRDY disabled; 
-    OSCCON = 0x73300;
+    // CF no clock failure; COSC FRCPLL; PLLODIV DIV_1; PBDIVRDY disabled; SLOCK out of lock; FRCDIV FRC/1; SLPEN Idle on WAIT instruction; NOSC FRCPLL; PLLMULT MUL_24; SOSCEN disabled; PBDIV DIV_1; CLKLOCK unlocked; OSWEN Switch is Complete; SOSCRDY disabled; 
+    OSCCON = 0x71100;
     SYSTEM_RegLock();
     // TUN Center Frequency; 
     OSCTUN = 0x0;
