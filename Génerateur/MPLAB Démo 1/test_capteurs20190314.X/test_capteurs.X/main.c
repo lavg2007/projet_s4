@@ -191,6 +191,16 @@ void main() {
     {   
         AUDIO_Init('0',moyennecap1+1);
 
+        //test pour faire un integrateur fuyant au lieu de faire une moyenne
+        //on trouve les nouvelles valeurs
+        stabValue1 +=  ADC_AnalogRead(17); //valeur 0-1024
+         
+        stabValue2 +=  ADC_AnalogRead(18);
+        
+        stabValue1_16 = val_016(stabValue1);//valeur 0-16
+        stabValue2_16 = val_016(stabValue2);
+        //check si faut clear le display
+        //Clear(stabValue1_16,stabValue2_16,past_cap1,past_cap2);
         
          if (BTN_GetValue('d')==1)
          {
@@ -199,18 +209,8 @@ void main() {
          }
          else{RGBLED_SetValue(255,35,0);}
 
-        
-        //test pour faire un integrateur fuyant au lieu de faire une moyenne
-        //on trouve les nouvelles valeurs
-        stabValue1 +=  ADC_AnalogRead(17); //valeur 0-1024
-        stabValue1 *= 0.55; //facteur de fuite a valider 
-        stabValue2 +=  ADC_AnalogRead(18);
+        stabValue1 *= 0.55; //facteur de fuite a valider
         stabValue2 *= 0.6;
-        stabValue1_16 = val_016(stabValue1);//valeur 0-16
-        stabValue2_16 = val_016(stabValue2);
-        //check si faut clear le display
-        //Clear(stabValue1_16,stabValue2_16,past_cap1,past_cap2);
-        
         //on save la derniere valeur pour faire des comparaisons plus tar
         past_cap1 = stabValue1_16;
         past_cap2 = stabValue2_16;
