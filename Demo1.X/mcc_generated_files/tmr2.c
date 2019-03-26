@@ -73,8 +73,9 @@
     None.
 */
 static bool binTest;
-float testBuffer[1024];
-float phase, sinOut;
+
+int testBuffer[1024];
+int phase, sinOut;
 
 typedef struct _TMR_OBJ_STRUCT
 {
@@ -114,24 +115,30 @@ char serialTest[12];
 int i = 0;
 void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
 {
-    BIN1(1);
+    //BIN1(1);
     //***User Area Begin
-    /*if(binTest)
-    {
-        BIN1(0);
-        binTest = false;
-    }
-    else
-    {
-        BIN1(1);
-        binTest = true;
-    }*/
     //phase = (phase + LUT_phase[500]) % 32768;
-    phase = fmodf((phase + LUT_phase[10]),1);
-    sinOut = sin(2*M_PI*phase);
-    OC1_PWMPulseWidthSet(190);
-    //UART_PutString(sprintf(serialTest, "%f", sinOut));
-    BIN1(0);
+    
+    //ISR
+//    phase = phase + LUT_phase[600];
+//    if(phase >= 1024)
+//        phase -= 1024;
+//    
+//    sinOut = LUT_sin[phase];
+//    OC1_PWMPulseWidthSet(((sinOut+1024)*PR3)>>11);
+//  
+    
+//    if(bufferCount >= 1024)
+//    {    
+//        bufferCount = 0;
+//        swapBuffers = true;
+//    }   
+//    bufferCount += 1;
+    
+//    sprintf(serialTest,"%d",bufferCount);
+    
+//      UART_PutString(serialTest);
+    //BIN1(0);
     //***User Area End
 
     tmr2_obj.count++;

@@ -103,7 +103,7 @@ void SYSTEM_Initialize(void)
     TMR3_Initialize();
     OC1_Initialize();
     LED_Init();
-    UART_Init(256000);
+    UART_Init(115200);
     TMR2_Initialize();
     INTERRUPT_Initialize();
 

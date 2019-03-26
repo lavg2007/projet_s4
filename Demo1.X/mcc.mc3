@@ -21,12 +21,12 @@
          <string>class com.microchip.mcc.mcu32.systemManager.icd.Icd</string>
       </entry>
       <entry>
-         <string>Interrupt Module</string>
-         <string>class com.microchip.mcc.mcu32.interruptManager.InterruptManager</string>
-      </entry>
-      <entry>
          <string>OC1</string>
          <string>class com.microchip.mcc.mcu32.modules.oc.OC</string>
+      </entry>
+      <entry>
+         <string>Interrupt Module</string>
+         <string>class com.microchip.mcc.mcu32.interruptManager.InterruptManager</string>
       </entry>
       <entry>
          <string>TMR3</string>
@@ -491,7 +491,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR3" name="actualPeriod"/>
-         <value>0.000001</value>
+         <value>0.00001</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="LATB" settingAlias="LATB14" alias="clear"/>
@@ -1987,7 +1987,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="TMR3" registerAlias="TCON"/>
-         <value>32768</value>
+         <value>32800</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="OC1" registerAlias="OCI" settingAlias="enable"/>
@@ -2375,7 +2375,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="TMR3" registerAlias="TCON" settingAlias="TCKPS"/>
-         <value>1:1</value>
+         <value>1:4</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="ANSELE" settingAlias="ANSE6" alias="analog"/>
@@ -3203,7 +3203,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.RegisterKey" moduleName="TMR3" registerAlias="PR"/>
-         <value>192</value>
+         <value>1920</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="CNPUA" settingAlias="CNPUA4"/>
@@ -3331,7 +3331,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR3" name="customPR"/>
-         <value>192</value>
+         <value>1920</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="TRISC" settingAlias="TRISC13" alias="input"/>
@@ -3974,12 +3974,12 @@
          <value>disabled</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="OC1" name="OC Fault Pins"/>
-         <value/>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="TMR3" registerAlias="TCON" settingAlias="TGATE"/>
          <value>disabled</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="OC1" name="OC Fault Pins"/>
+         <value/>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="LATB" settingAlias="LATB6" alias="clear"/>
@@ -6411,7 +6411,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR3" name="callBackRate"/>
-         <value>0.000001</value>
+         <value>0.00001</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="Pin Module" registerAlias="CNPUB" settingAlias="CNPUB2"/>
@@ -8983,7 +8983,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR3" name="requestedPeriod"/>
-         <value>0.000001</value>
+         <value>0.00001</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="customNameUserSet RB15"/>
@@ -9087,7 +9087,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TMR3" name="prescaleDivisor"/>
-         <value>1</value>
+         <value>4</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="CNPUF" settingAlias="CNPUF12" alias="disabled"/>
@@ -9867,7 +9867,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="TMR3" registerAlias="PR" settingAlias="PR"/>
-         <value>192</value>
+         <value>1920</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.SettingKey" moduleName="TMR2" registerAlias="PR" settingAlias="PR"/>
@@ -11802,12 +11802,12 @@
          <value>1</value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="OC1" name="OC Trigger Pins"/>
-         <value/>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="TMR3" registerAlias="TCON" settingAlias="TCKPS" alias="1:64"/>
          <value>6</value>
+      </entry>
+      <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="OC1" name="OC Trigger Pins"/>
+         <value/>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="Pin Module" registerAlias="CNPDD" settingAlias="CNPDD7" alias="enabled"/>
@@ -12101,7 +12101,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\mcc.h</file>
-         <hash>e535829cb128b2d91f2969234a7edaa9a92f46f330ebec0b5a86aac79b6292b5</hash>
+         <hash>c78028bcc696dec76e126cf2975aa409299839a5d57a2516f4850171ab3d7570</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\tmr3.h</file>
@@ -12125,7 +12125,7 @@
       </entry>
       <entry>
          <file>mcc_generated_files\tmr3.c</file>
-         <hash>db4b64de0d58a614a3cf2aa16c20d47a9126b480394771324e6ea2be1cc84686</hash>
+         <hash>74646e3c7f37358adadef8cb73630ac6d6ea53a219d603c0405030a354b12f17</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\oc1.h</file>

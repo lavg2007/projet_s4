@@ -21,6 +21,11 @@
       <itemPath>led.h</itemPath>
       <itemPath>LUT_phase.h</itemPath>
       <itemPath>uart.h</itemPath>
+      <itemPath>aic.h</itemPath>
+      <itemPath>lcd.h</itemPath>
+      <itemPath>i2c.h</itemPath>
+      <itemPath>adc.h</itemPath>
+      <itemPath>utils.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -45,6 +50,11 @@
       <itemPath>swDelay.c</itemPath>
       <itemPath>led.c</itemPath>
       <itemPath>uart.c</itemPath>
+      <itemPath>adc.c</itemPath>
+      <itemPath>aic.c</itemPath>
+      <itemPath>i2c.c</itemPath>
+      <itemPath>lcd.c</itemPath>
+      <itemPath>utils.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -96,32 +106,6 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
-      <C32>
-        <property key="additional-warnings" value="false"/>
-        <property key="addresss-attribute-use" value="false"/>
-        <property key="enable-app-io" value="false"/>
-        <property key="enable-omit-frame-pointer" value="false"/>
-        <property key="enable-symbols" value="true"/>
-        <property key="enable-unroll-loops" value="false"/>
-        <property key="exclude-floating-point" value="false"/>
-        <property key="extra-include-directories" value=""/>
-        <property key="generate-16-bit-code" value="false"/>
-        <property key="generate-micro-compressed-code" value="false"/>
-        <property key="isolate-each-function" value="false"/>
-        <property key="make-warnings-into-errors" value="false"/>
-        <property key="optimization-level" value=""/>
-        <property key="place-data-into-section" value="false"/>
-        <property key="post-instruction-scheduling" value="default"/>
-        <property key="pre-instruction-scheduling" value="default"/>
-        <property key="preprocessor-macros" value=""/>
-        <property key="strict-ansi" value="false"/>
-        <property key="support-ansi" value="false"/>
-        <property key="toplevel-reordering" value=""/>
-        <property key="unaligned-access" value=""/>
-        <property key="use-cci" value="false"/>
-        <property key="use-iar" value="false"/>
-        <property key="use-indirect-calls" value="false"/>
-      </C32>
       <C32-AR>
         <property key="additional-options-chop-files" value="false"/>
       </C32-AR>
@@ -256,8 +240,6 @@
         <property key="voltagevalue" value="3.25"/>
       </PK3OBPlatformTool>
       <item path="main.c" ex="true" overriding="false">
-        <C32>
-        </C32>
         <C32-AR>
         </C32-AR>
         <C32-AS>

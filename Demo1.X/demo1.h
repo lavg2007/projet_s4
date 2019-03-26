@@ -15,9 +15,10 @@ extern "C" {
 #define SIG_LEN 1024
 extern int32_t inBuffer1[], inBuffer2[], outBuffer1[], outBuffer2[], *currentInBuffer, *currentOutBuffer, bufferCount;
 extern bool swapBuffers;
-extern float phase, sinOut;
+extern int phase, sinOut;
 extern const unsigned int freqSampling;
 extern const unsigned int freqTest;
+extern int32_t stabValue1;
 
 
 #ifdef	__cplusplus
