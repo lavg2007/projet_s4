@@ -14,11 +14,13 @@
         <itemPath>mcc_generated_files/oc1.h</itemPath>
         <itemPath>hardware.h</itemPath>
         <itemPath>config.h</itemPath>
+        <itemPath>mcc_generated_files/tmr3.h</itemPath>
       </logicalFolder>
       <itemPath>demo1.h</itemPath>
       <itemPath>swDelay.h</itemPath>
       <itemPath>led.h</itemPath>
       <itemPath>LUT_phase.h</itemPath>
+      <itemPath>uart.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -36,11 +38,13 @@
         <itemPath>mcc_generated_files/pin_manager.c</itemPath>
         <itemPath>mcc_generated_files/oc1.c</itemPath>
         <itemPath>PICmx370.c</itemPath>
+        <itemPath>mcc_generated_files/tmr3.c</itemPath>
       </logicalFolder>
       <itemPath>demo1.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>swDelay.c</itemPath>
       <itemPath>led.c</itemPath>
+      <itemPath>uart.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -66,7 +70,7 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32MX_DFP" vendor="Microchip" version="1.0.28"/>
+        <pack name="PIC32MX_DFP" vendor="Microchip" version="1.0.25"/>
       </packs>
       <compileType>
         <linkerTool>

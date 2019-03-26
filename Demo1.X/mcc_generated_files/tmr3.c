@@ -1,18 +1,18 @@
 
 /**
-  TMR2 Generated Driver API Source File 
+  TMR3 Generated Driver API Source File 
 
   @Company
     Microchip Technology Inc.
 
   @File Name
-    tmr2.c
+    tmr3.c
 
   @Summary
-    This is the generated source file for the TMR2 driver using PIC32MX MCUs
+    This is the generated source file for the TMR3 driver using PIC32MX MCUs
 
   @Description
-    This source file provides APIs for driver for TMR2. 
+    This source file provides APIs for driver for TMR3. 
     Generation Information : 
         Product Revision  :  PIC32MX MCUs - pic32mx : v1.35
         Device            :  PIC32MX370F512L
@@ -49,13 +49,8 @@
 */
 
 #include <xc.h>
-#include <stdlib.h>
-#include "tmr2.h"
-#include "../hardware.h"
-#include "../demo1.h"
-#include <math.h>
-#include "../LUT_phase.h"
-#include <stdio.h>
+#include "tmr3.h"
+
 /**
   Section: Data Type Definitions
 */
@@ -72,9 +67,6 @@
   Remarks:
     None.
 */
-static bool binTest;
-float testBuffer[1024];
-float phase, sinOut;
 
 typedef struct _TMR_OBJ_STRUCT
 {
@@ -85,130 +77,103 @@ typedef struct _TMR_OBJ_STRUCT
 
 } TMR_OBJ;
 
-static TMR_OBJ tmr2_obj;
+static TMR_OBJ tmr3_obj;
 
 /**
   Section: Driver Interface
 */
 
 
-void TMR2_Initialize (void)
+void TMR3_Initialize (void)
 {
-    // TMR2 0; 
-    TMR2 = 0x0;
-    // Period = 0.000025 s; Frequency = 192000000 Hz; PR2 4800; 
-    PR2 = 0x12C0;
-    // TCKPS 1:1; T32 16 Bit; TCS PBCLK; SIDL disabled; TGATE disabled; ON enabled; 
-    T2CON = 0x8000;
-    phase = 0;
-    sinOut = 0;
-    IFS0CLR= 1 << _IFS0_T2IF_POSITION;
-    IEC0bits.T2IE = true;
+    // TMR3 0; 
+    TMR3 = 0x0;
+    // Period = 0.000001 s; Frequency = 192000000 Hz; PR3 192; 
+    PR3 = 0xC0;
+    // TCKPS 1:1; TCS PBCLK; SIDL disabled; TGATE disabled; ON enabled; 
+    T3CON = 0x8000;
 	
-    tmr2_obj.timerElapsed = false;
+    tmr3_obj.timerElapsed = false;
 
 }
 
 
-char serialTest[12];
-int i = 0;
-void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
+
+void TMR3_Tasks_16BitOperation( void )
 {
-    BIN1(1);
-    //***User Area Begin
-    /*if(binTest)
+    if(IFS0bits.T3IF)
     {
-        BIN1(0);
-        binTest = false;
+        tmr3_obj.count++;
+        tmr3_obj.timerElapsed = true;
+        IFS0CLR= 1 << _IFS0_T3IF_POSITION;
     }
-    else
-    {
-        BIN1(1);
-        binTest = true;
-    }*/
-    //phase = (phase + LUT_phase[500]) % 32768;
-    phase = fmodf((phase + LUT_phase[10]),1);
-    sinOut = sin(2*M_PI*phase);
-    OC1_PWMPulseWidthSet(190);
-    //UART_PutString(sprintf(serialTest, "%f", sinOut));
-    BIN1(0);
-    //***User Area End
-
-    tmr2_obj.count++;
-    tmr2_obj.timerElapsed = true;
-    IFS0CLR= 1 << _IFS0_T2IF_POSITION;
 }
 
-void TMR2_Period16BitSet( uint16_t value )
+void TMR3_Period16BitSet( uint16_t value )
 {
     /* Update the counter values */
-    PR2 = value;
+    PR3 = value;
     /* Reset the status information */
-    tmr2_obj.timerElapsed = false;
+    tmr3_obj.timerElapsed = false;
 }
 
-uint16_t TMR2_Period16BitGet( void )
+uint16_t TMR3_Period16BitGet( void )
 {
-    return( PR2 );
+    return( PR3 );
 }
 
-void TMR2_Counter16BitSet ( uint16_t value )
+void TMR3_Counter16BitSet ( uint16_t value )
 {
     /* Update the counter values */
-    TMR2 = value;
+    TMR3 = value;
     /* Reset the status information */
-    tmr2_obj.timerElapsed = false;
+    tmr3_obj.timerElapsed = false;
 }
 
-uint16_t TMR2_Counter16BitGet( void )
+uint16_t TMR3_Counter16BitGet( void )
 {
-    return( TMR2 );
+    return( TMR3 );
 }
 
 
-void TMR2_Start( void )
+void TMR3_Start( void )
 {
     /* Reset the status information */
-    tmr2_obj.timerElapsed = false;
+    tmr3_obj.timerElapsed = false;
 
-    IFS0CLR= 1 << _IFS0_T2IF_POSITION;
-    /*Enable the interrupt*/
-    IEC0bits.T2IE = true;
 
     /* Start the Timer */
-    T2CONbits.ON = 1;
+    T3CONbits.ON = 1;
 }
 
-void TMR2_Stop( void )
+void TMR3_Stop( void )
 {
     /* Stop the Timer */
-    T2CONbits.ON = false;
+    T3CONbits.ON = false;
 
-    /*Disable the interrupt*/
-    IEC0bits.T2IE = false;
 }
 
-bool TMR2_GetElapsedThenClear(void)
+bool TMR3_GetElapsedThenClear(void)
 {
     bool status;
     
-    status = tmr2_obj.timerElapsed;
+    status = tmr3_obj.timerElapsed;
 
     if(status == true)
     {
-        tmr2_obj.timerElapsed = false;
+        tmr3_obj.timerElapsed = false;
     }
     return status;
 }
 
-int TMR2_SoftwareCounterGet(void)
+int TMR3_SoftwareCounterGet(void)
 {
-    return tmr2_obj.count;
+    return tmr3_obj.count;
 }
 
-void TMR2_SoftwareCounterClear(void)
+void TMR3_SoftwareCounterClear(void)
 {
-    tmr2_obj.count = 0; 
+    tmr3_obj.count = 0; 
 }
 
 /**

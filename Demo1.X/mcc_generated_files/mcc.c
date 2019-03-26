@@ -64,7 +64,7 @@
 #pragma config FPBDIV = DIV_1    // Peripheral Clock Divisor->Pb_Clk is Sys_Clk/1
 #pragma config FCKSM = CSDCMD    // Clock Switching and Monitor Selection->Clock Switch Disable, FSCM Disabled
 #pragma config WDTPS = PS1048576    // Watchdog Timer Postscaler->1:1048576
-#pragma config WINDIS = ON    // Watchdog Timer Window Enable->Watchdog Timer is in Window Mode
+#pragma config WINDIS = OFF    // Watchdog Timer Window Enable->Watchdog Timer is in Non-Window Mode
 #pragma config FWDTEN = ON    // Watchdog Timer Enable->WDT Enabled
 #pragma config FWDTWINSZ = WINSZ_25    // Watchdog Timer Window Size->Window Size is 25%
 
@@ -100,8 +100,10 @@ void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
+    TMR3_Initialize();
     OC1_Initialize();
     LED_Init();
+    UART_Init(256000);
     TMR2_Initialize();
     INTERRUPT_Initialize();
 

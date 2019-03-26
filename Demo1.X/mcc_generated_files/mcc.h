@@ -49,6 +49,7 @@
 #include "pin_manager.h"
 #include <stdint.h>
 #include <stdbool.h>
+#include "tmr3.h"
 #include "tmr2.h"
 #include "interrupt_manager.h"
 #include "oc1.h"

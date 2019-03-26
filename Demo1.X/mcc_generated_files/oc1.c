@@ -62,8 +62,8 @@ void OC1_Initialize (void)
     // OC1R 0;     
     OC1R = 0x0;
     
-    // OC32 16-bit Mode; OCM PWM mode fault disabled; SIDL disabled; OCTSEL TMR2; ON enabled;     
-    OC1CON = 0x8006;
+    // OC32 16-bit Mode; OCM PWM mode fault disabled; SIDL disabled; OCTSEL TMR3; ON enabled;     
+    OC1CON = 0x800E;
 	
 }
 

@@ -57,14 +57,12 @@ const unsigned int freqSampling = 20000;
 const unsigned int freqTest = 1000;
 int32_t *currentInBuffer, *currentOutBuffer, bufferCount;
 bool swapBuffers;
-float phase, sinOut;
+
 int main(void)
 {
     int32_t *previousInBuffer, *previousOutBuffer;
     static int32_t inBuffer1[SIG_LEN], inBuffer2[SIG_LEN], outBuffer1[SIG_LEN], outBuffer2[SIG_LEN];
     // initialize the device
-    phase = 0;
-    sinOut = 0;
     bufferCount = 0;
     swapBuffers = false;
     currentInBuffer = inBuffer1;
