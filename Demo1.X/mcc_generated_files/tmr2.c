@@ -124,7 +124,7 @@ void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
     //phase = (phase + LUT_phase[500]) % 32768;
     phase = fmodf(phase + LUT_phase[500],1);
     sinOut = sin(2*M_PI*phase);
-    OC1_PWMPulseWidthSet(((int)(sinOut + 512 * PR2) >> 10));
+    OC1_PWMPulseWidthSet((int)(sinOut*PR2));
     
     
     BIN1(0);
