@@ -12,14 +12,19 @@
 extern "C" {
 #endif
 
-#define SIG_LEN 1024
+#define fftc            fft32c1024
+#define LOG2FFTLEN      10
+#define FFT_LEN         1024
+#define SIG_LEN         768
+#define H_LEN           256
+    
 extern int32_t inBuffer1[], inBuffer2[], outBuffer1[], outBuffer2[], *currentInBuffer, *currentOutBuffer, bufferCount;
 extern bool swapBuffers;
 extern int phase, sinOut;
 extern const unsigned int freqSampling;
 extern const unsigned int freqTest;
 extern int32_t stabValue1;
-
+extern int16_t buffer69;
 
 #ifdef	__cplusplus
 }

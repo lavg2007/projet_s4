@@ -88,10 +88,10 @@ void TMR3_Initialize (void)
 {
     // TMR3 0; 
     TMR3 = 0x0;
-    // Period = 0.00001 s; Frequency = 192000000 Hz; PR3 1920; 
-    PR3 = 0x780;
-    // TCKPS 1:4; TCS PBCLK; SIDL disabled; TGATE disabled; ON enabled; 
-    T3CON = 0x8020;
+    // Period = 0.000001 s; Frequency = 192000000 Hz; PR3 192; 
+    PR3 = 0xC0;
+    // TCKPS 1:1; TCS PBCLK; SIDL disabled; TGATE disabled; ON enabled; 
+    T3CON = 0x8000;
 	
     tmr3_obj.timerElapsed = false;
 

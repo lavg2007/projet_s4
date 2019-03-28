@@ -56,6 +56,7 @@
 #include <math.h>
 #include "../LUT_phase.h"
 #include <stdio.h>
+#include "../filterIIRcoeffs.h"
 /**
   Section: Data Type Definitions
 */
@@ -75,7 +76,7 @@
 static bool binTest;
 
 int testBuffer[1024];
-int phase, sinOut;
+int phase;
 
 typedef struct _TMR_OBJ_STRUCT
 {
@@ -97,43 +98,64 @@ void TMR2_Initialize (void)
 {
     // TMR2 0; 
     TMR2 = 0x0;
-    // Period = 0.000025 s; Frequency = 192000000 Hz; PR2 4800; 
-    PR2 = 0x12C0;
+    // Period = 0.00005 s; Frequency = 192000000 Hz; PR2 9600; 
+    PR2 = 0x2580;
     // TCKPS 1:1; T32 16 Bit; TCS PBCLK; SIDL disabled; TGATE disabled; ON enabled; 
     T2CON = 0x8000;
     phase = 0;
-    sinOut = 0;
     IFS0CLR= 1 << _IFS0_T2IF_POSITION;
     IEC0bits.T2IE = true;
+//    IEC0bits.T2IE = false;
 	
     tmr2_obj.timerElapsed = false;
 
 }
-
+int i2cOut = '6';
+int address = 0;
+int16_t buffer; //16 bits?
 
 char serialTest[12];
-int i = 0;
+int y,i = 0;
+extern int32_t stabValue1;
+int8_t buffer1[3] = {0,0,0};
+
 void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
 {
-    //BIN1(1);
+      BIN1(1);
     //***User Area Begin
-    //phase = (phase + LUT_phase[500]) % 32768;
+//    phase = (phase + LUT_phase[500]) % 32768;
     
     //ISR
-//    phase = phase + LUT_phase[600];
-//    if(phase >= 1024)
-//        phase -= 1024;
-//    
-//    sinOut = LUT_sin[phase];
-//    OC1_PWMPulseWidthSet(((sinOut+1024)*PR3)>>11);
+    //Lecture des capteurs
+    address = 0x4a;
+    i2cOut = I2C_Read(address,buffer1,2);
+    buffer = buffer1[0];
+    buffer = buffer << 4 ;
+    buffer69 = buffer + (buffer1[1] >>4);
+    if (buffer69<100){
+        buffer69 = 100;
+    }
+    else if (buffer69>1000){
+        buffer69 = 1000;
+    }         
+    stabValue1 = buffer69;
+    
+    phase = phase + LUT_phase[stabValue1];
+    if(phase >= 1024)
+        phase -= 1024;
+    currentInBuffer[bufferCount] = LUT_sin[phase];
+    
+    OC1_PWMPulseWidthSet(((currentInBuffer[bufferCount]+1024)*PR3)>>11);
+    BIN1(0);
+    
 //  
     
-//    if(bufferCount >= 1024)
-//    {    
-//        bufferCount = 0;
-//        swapBuffers = true;
-//    }   
-//    bufferCount += 1;
+    if(bufferCount >= SIG_LEN)
+    {    
+        bufferCount = 0;
+        swapBuffers = true;
+    }   
+    bufferCount += 1;
     
 //    sprintf(serialTest,"%d",bufferCount);
     

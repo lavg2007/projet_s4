@@ -24,20 +24,24 @@ nsin = np.arange(range)
 sin = np.round(np.sin(2*np.pi*nsin/range) * range)
 
 with open('LUT_phase.h', 'w') as fd:
-    fd.write(f'unsigned int LUT_phase[{len(cap)}] = {{\n')
+    fd.write(f'int LUT_phase[{len(cap)}] = {{\n')
     for x in Qfreq:
         fd.write(f'{x},\n')
     fd.write('};\n')
-    fd.write(f'unsigned int LUT_sin[{len(nsin)}] = {{\n')
+    fd.write(f'int LUT_sin[{len(nsin)}] = {{\n')
     for x in sin:
         fd.write(f'{x},\n')
     fd.write('};')
 
 plt.figure(0)
 plt.plot(cap, Qfreq)
-plt.show()
+# plt.show()
 
 
 plt.figure(1)
 plt.plot(nsin, sin)
+# plt.show()
+
+plt.figure(2)
+plt.plot(cap, freq*fs)
 plt.show()

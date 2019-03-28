@@ -56,9 +56,17 @@
 #include "adc.h"
 #include "lcd.h"
 #include "utils.h"
+#include "rgbled.h"
+#include "swt.h"
 
 #define BAUD_RATE 9600
 #define RECEIVE_BUFFER_LEN  1024
+
+// MX3 DSP library include files
+#include "fftc.h"
+
+// FIR filter transfer functions, non-negative frequency components only, scaled by 2^HScaleLog2 for fixed-point encoding
+//#include "filterFIRcoeffs.h"
 
 /*
                          Main application
@@ -66,11 +74,11 @@
 const unsigned int freqSampling = 20000;
 const unsigned int freqTest = 1000;
 int32_t *currentInBuffer, *currentOutBuffer, bufferCount;
-
+int16_t buffer69; //16 bits
 bool swapBuffers;
 int32_t stabValue1;
 char bufChar[10];
-
+int HScaleLog2 = 8;
 
 void Clear(int cap1,int cap2, int past_cap1,int past_cap2)
 {
@@ -120,73 +128,63 @@ int main(void)
 {
     int32_t *previousInBuffer, *previousOutBuffer;
     static int32_t inBuffer1[SIG_LEN], inBuffer2[SIG_LEN], outBuffer1[SIG_LEN], outBuffer2[SIG_LEN];
+    static int32c inFFT[FFT_LEN], outFFT[FFT_LEN], Scratch[FFT_LEN], H[FFT_LEN];
     // initialize the device
     bufferCount = 0;
     swapBuffers = false;
     currentInBuffer = inBuffer1;
     currentOutBuffer = outBuffer1;
-    SYSTEM_Initialize();
-    
-    LED_SetValue(6,1);
-    ADC_Init();
-    LCD_Init();
     I2C_Init(100000); //initiallisation de la communication I2c a 1600hz
-    
-    
-    int cap1,cap2;
-    int past_cap1 = 0,past_cap2 = 0;
-    
-    int count =0;
-    char cap1str[40];
-    char countstr[40];
-    int k;
-    int cstAvrg = 9;
-    int valuescap1[cstAvrg + 1];
-    int valuescap2[cstAvrg + 1];
-    int moyennecap1 = 0;
-    int moyennecap2 = 0;
-//    int stabValue1 = 0;
-    int stabValue2 = 0;
-    int i2cOut = '6';
-    int address = 0;
-    int16_t buffer; //16 bits?
-    int16_t buffer69; //16 bits?
-    int8_t buffer1[3] = {0,0,0};
-    char toDisp1[64];
-    char toDisp2[6];
-    int output;
-    
-    char write_1 = 0x48;
-    char write_2 = 0x01;
-    char write_3 = 0x04;
-    char write_4 = 0x83;
-    char write_5 = 0x48;
-    char write_6 = 0x00;
-    char read_1 = 0x91;
-    char i2cin1 = '6';
-    char i2cin2 = '6';
-    
     char askConti[3] = {0x01,0x04,0x83};
     char pointReg[2] = {0x90,0x00};
 
+    char i2cin1 = '6';
+    char i2cin2 = '6';
     //Write to Config register:
         i2cin1 = I2C_Write(0x4a,askConti,3,1);
     //Set reading mode as continuous
         i2cin1 = I2C_Write(0x4a,pointReg,2,1);
+    
+    
+    
+    SYSTEM_Initialize();
+    RGBLED_Init();
+    LED_SetValue(6,1);
+    SWT_Init();
+    LCD_Init();
+    
+    
+ 
+    int past_cap1 = 0,past_cap2 = 0;
+    
+    int count =0;
+    int k;
+    int cstAvrg = 9;
+    int valuescap1[cstAvrg + 1];
+    int valuescap2[cstAvrg + 1];
+    int stabValue2 = 0;
+    int stabValue1_16;
+    char toDisp1[64];
+    char toDisp2[6];
+    int m, n;
+    int valMax = 0;
+    int indxMax = 0;
+    
+
     //initialisation du tableau pour les valeurs du cap1
     for (k=0 ;k < cstAvrg; k++){
         valuescap1[k] = 0;
         valuescap2[k] = 0;
     }
-//    output = I2C_Write(0x4a,0x86,2,0);
     
     
     while (1)
     {
+        //BIN1(0);
         //DEBUG FFT
 //        if(swapBuffers)
 //        {
-//            BIN1(1);
+//            //BIN1(1);
 //            LED_ToggleValue(3);
 //            IEC0bits.T2IE = false;
 //            if (currentInBuffer == inBuffer1) {
@@ -200,42 +198,103 @@ int main(void)
 //                previousInBuffer = inBuffer2;
 //                previousOutBuffer = outBuffer2;
 //            }
-//            usDelay(5);
+//            for (n = 0; n < SIG_LEN; n++) {
+//                previousOutBuffer[n] = currentInBuffer[n];
+//            }
+//        //FFT pour preparer a la multiplication
+////            for (n = 0, m = SIG_LEN - H_LEN; n < H_LEN; n++, m++) {
+////                inFFT[n].re = currentOutBuffer[m] * FFT_LEN;
+////                inFFT[n].im = 0;
+////            }
+////            for (m = 0; m < SIG_LEN; m++, n++) {
+////                inFFT[n].re = previousOutBuffer[m] * FFT_LEN;
+////                inFFT[n].im = 0;
+////            }
+////            mips_fft32(outFFT, inFFT, (int32c *) fftc, Scratch, LOG2FFTLEN); //la sortie de la FFT mesure 1024 element
+////
+////            
+////            //Trouver l'index de la valuer maximale
+////            for(n = 0;n < (SIG_LEN - H_LEN);n++) {
+////                if(inFFT[n].re > valMax){
+////                    indxMax = n;
+////                    valMax = inFFT[n].re;
+////                }
+////                        
+////            }
+//            
+//            
+//            //FFT inverse si on a besoin plus tard
+//            /*
+//            if (SW0()) {
+//                // FIR Filtering with Y = HX, actually (HX)* in preparation for inverse FFT using forward FFT    operation
+//                // *** VOTRE CODE ICI: BOUCLE FOR MANQUANTE... ***
+//                
+//                //passer dans un filtre d'ordre 2 H(m) c'est donc une simple multiplication dans le domaine imaginaire
+//                //(a+bi)(c+di) 	= (ac - bd) + (ad + bc)i
+//                for(n = 0; n < FFT_LEN; n++){
+//                   inFFT[n].re = (outFFT[n].re * H[n].re - outFFT[n].im * H[n].im);
+//                   inFFT[n].im = -(outFFT[n].re * H[n].im + outFFT[n].im * H[n].re); //  le moins (-) c'est pour le conjugue complexe
+//                }
+//            } else {
+//                // Simply pass-through of X* in preparation for inverse FFT using forward FFT operation
+//                for (n = 0; n < FFT_LEN; n++) { // Conjugaison complexe de la multiplication
+//                    inFFT[n].re = outFFT[n].re;
+//                    inFFT[n].im = -outFFT[n].im;
+//                }
+//            }
+//            
+//            mips_fft32(outFFT, inFFT, (int32c *) fftc, Scratch, LOG2FFTLEN);
+//
+//            // Extract real part of the inverse FFT, discard first 1/4 (H_LEN) samples as per the "Overlap-and-save" method, remove H scaling
+//            if (SW0()) {
+//                for (n = 0; n < SIG_LEN; n++)
+//                    previousOutBuffer[n] = ((int) (outFFT[n + H_LEN].re)) >> HScaleLog2;
+//            } else {
+//                for (n = 0; n < SIG_LEN; n++)
+//                    previousOutBuffer[n] = outFFT[n + H_LEN].re;
+//            }
+//             */
+//            
 //            IEC0bits.T2IE = true;
 //            swapBuffers = false;
-//            BIN1(0);
+//            //BIN1(0);
 //        }
         //STUFF D'AFFICHAGE ET LECTURE CAPTEUR      
-        address = 0x4a;
-        i2cOut = I2C_Read(address,buffer1,2);
-        snprintf(toDisp1,10,"%c-%c-%c",i2cin1,i2cin2,i2cOut);  //0 si ca marche
-        buffer = buffer1[0];
-        buffer = buffer << 4 ;
-        buffer69 = buffer + (buffer1[1] >>4);
-        if (buffer69<100){
-            buffer69 = 0;
-        }
-        else if (buffer69>1000){
-            buffer69 = 1000;
-        }               
+        
+        
        
         //test pour faire un integrateur fuillant au lieu de faire une moyenne
         //on trouve les nouvelles valeurs
-        stabValue1 +=  Val_016(buffer69);
-        stabValue1 *= 0.6;
-//        stabValue2 +=  Val_016(18);
-//        stabValue2 *= 0.6;
-        stabValue2 = 0;
+//        stabValue1 *=0.4; // ajuster le coeff
         
-        //check si faut clear le display
-        Clear(stabValue1,stabValue2,past_cap1,past_cap2);
+        //equivalent de l'integrateur mais sur une val de 0 a 16
+//        stabValue1_16 = Val_016(buffer69);
+////        stabValue2 +=  Val_016(18);
+////        stabValue2 *= 0.6;
+//        //stabValue1_16 = 0;//Val_016(buffer69_2); --> adapter pour le deuxieme capteur
+//        stabValue2 = 0;
+//        
+//        //check si faut clear le display
+//        Clear(stabValue1_16,stabValue2,past_cap1,past_cap2);
+//        
+//        //on save la derniere valeur pour faire des comparaisons plus tar
+//        past_cap1 = stabValue1_16;
+//        past_cap2 = stabValue2;
+//        
+//        //update du display
+//        lcdBlocks(stabValue1_16,stabValue2);
+//        
+//        
         
-        //on save la derniere valeur pour faire des comparaisons plus tar
-        past_cap1 = stabValue1;
-        past_cap2 = stabValue2;
         
-        //update du display
-        lcdBlocks(stabValue1,stabValue2);
+        //Gestion des conditions de la lumiere
+         if (SWT_GetValue(0))
+         {
+            if (buffer69 < 200|| buffer69>900){RGBLED_SetValue(255,0,0);}
+            else{RGBLED_SetValue(0,255,0);}        
+         }
+         else{RGBLED_SetValue(255,35,0);}
+        //BIN1(1);
         
     if (count == cstAvrg)
         {
@@ -245,13 +304,14 @@ int main(void)
         else{
         count++;
         }
+        
     }
 
 
         
     
-
-    return -1;
+    
+    //return -1;
 }
 /**
  End of File

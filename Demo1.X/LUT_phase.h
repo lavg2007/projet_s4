@@ -1,4 +1,4 @@
-unsigned int LUT_phase[900] = {
+int LUT_phase[900] = {
 2.0,
 2.0,
 2.0,
