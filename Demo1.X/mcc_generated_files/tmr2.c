@@ -74,9 +74,10 @@
     None.
 */
 static bool binTest;
-
+static int counter;
 int testBuffer[1024];
 int phase;
+bool flagCap;
 
 typedef struct _TMR_OBJ_STRUCT
 {
@@ -97,6 +98,7 @@ static TMR_OBJ tmr2_obj;
 void TMR2_Initialize (void)
 {
     // TMR2 0; 
+    counter = 0;
     TMR2 = 0x0;
     // Period = 0.00005 s; Frequency = 192000000 Hz; PR2 9600; 
     PR2 = 0x2580;
@@ -106,50 +108,33 @@ void TMR2_Initialize (void)
     IFS0CLR= 1 << _IFS0_T2IF_POSITION;
     IEC0bits.T2IE = true;
 //    IEC0bits.T2IE = false;
-	
+	flagCap = false;
     tmr2_obj.timerElapsed = false;
-
+   
 }
-int i2cOut = '6';
-int address = 0;
-int16_t buffer; //16 bits?
 
-char serialTest[12];
-int y,i = 0;
-extern int32_t stabValue1;
-int8_t buffer1[3] = {0,0,0};
 
 void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
 {
-      BIN1(1);
+     // BIN1(1);
     //***User Area Begin
 //    phase = (phase + LUT_phase[500]) % 32768;
     
-    //ISR
-    //Lecture des capteurs
-    address = 0x4a;
-    i2cOut = I2C_Read(address,buffer1,2);
-    buffer = buffer1[0];
-    buffer = buffer << 4 ;
-    buffer69 = buffer + (buffer1[1] >>4);
-    if (buffer69<100){
-        buffer69 = 100;
-    }
-    else if (buffer69>1000){
-        buffer69 = 1000;
-    }         
-    stabValue1 = buffer69;
     
     phase = phase + LUT_phase[stabValue1];
-    if(phase >= 1024)
-        phase -= 1024;
+    if(phase >= SINE_RANGE)
+        phase -= SINE_RANGE;
     currentInBuffer[bufferCount] = LUT_sin[phase];
     
-    OC1_PWMPulseWidthSet(((currentInBuffer[bufferCount]+1024)*PR3)>>11);
-    BIN1(0);
-    
+    OC1_PWMPulseWidthSet(((currentInBuffer[bufferCount]+SINE_RANGE)*PR3)>>SINE_LOG);
+    counter += 1;
+    if(counter >= 200)
+    {
+        flagCap = true;
+        counter = 0;
+    }    
+    //BIN1(0); 
 //  
-    
     if(bufferCount >= SIG_LEN)
     {    
         bufferCount = 0;

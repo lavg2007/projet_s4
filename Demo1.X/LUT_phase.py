@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 capMin = 100
 capMax = 1000
-range = 2**10
+range = 2**11
 
 
 fs = 20000

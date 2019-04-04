@@ -49,10 +49,10 @@
 #include "pin_manager.h"
 #include <stdint.h>
 #include <stdbool.h>
-#include "oc1.h"
-#include "tmr2.h"
-#include "tmr3.h"
 #include "interrupt_manager.h"
+#include "tmr3.h"
+#include "tmr2.h"
+#include "oc1.h"
 
 #define _XTAL_FREQ  192000000UL
 

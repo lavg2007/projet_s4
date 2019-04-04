@@ -17,6 +17,8 @@ extern "C" {
 #define FFT_LEN         1024
 #define SIG_LEN         768
 #define H_LEN           256
+#define SINE_LOG        12
+#define SINE_RANGE      2048
     
 extern int32_t inBuffer1[], inBuffer2[], outBuffer1[], outBuffer2[], *currentInBuffer, *currentOutBuffer, bufferCount;
 extern bool swapBuffers;
@@ -25,6 +27,7 @@ extern const unsigned int freqSampling;
 extern const unsigned int freqTest;
 extern int32_t stabValue1;
 extern int16_t buffer69;
+extern bool flagCap;
 
 #ifdef	__cplusplus
 }

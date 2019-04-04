@@ -75,10 +75,11 @@ const unsigned int freqSampling = 20000;
 const unsigned int freqTest = 1000;
 int32_t *currentInBuffer, *currentOutBuffer, bufferCount;
 int16_t buffer69; //16 bits
-bool swapBuffers;
+bool swapBuffers, flagCap;
 int32_t stabValue1;
 char bufChar[10];
 int HScaleLog2 = 8;
+
 
 void Clear(int cap1,int cap2, int past_cap1,int past_cap2)
 {
@@ -129,6 +130,12 @@ int main(void)
     int32_t *previousInBuffer, *previousOutBuffer;
     static int32_t inBuffer1[SIG_LEN], inBuffer2[SIG_LEN], outBuffer1[SIG_LEN], outBuffer2[SIG_LEN];
     static int32c inFFT[FFT_LEN], outFFT[FFT_LEN], Scratch[FFT_LEN], H[FFT_LEN];
+    int i2cOut = '6';
+    int address = 0;
+    int16_t buffer; //16 bits?
+    char serialTest[12];
+    int y,i = 0;
+    int8_t buffer1[3] = {0,0,0};
     // initialize the device
     bufferCount = 0;
     swapBuffers = false;
@@ -148,7 +155,6 @@ int main(void)
     
     
     SYSTEM_Initialize();
-    RGBLED_Init();
     LED_SetValue(6,1);
     SWT_Init();
     LCD_Init();
@@ -182,6 +188,28 @@ int main(void)
     {
         //BIN1(0);
         //DEBUG FFT
+            //ISR
+            //Lecture des capteurs
+    
+        if(flagCap)
+        {
+            BIN1(1);
+            flagCap = false;
+            address = 0x4a;
+            i2cOut = I2C_Read(address,buffer1,2);
+            buffer = buffer1[0];
+            buffer = buffer << 4 ;
+            buffer69 = buffer + (buffer1[1] >>4);
+            if (buffer69<100){
+                buffer69 = 100;
+            }
+            else if (buffer69>1000){
+                buffer69 = 1000;
+            }         
+            stabValue1 = buffer69;
+            BIN1(0);
+        }
+            
 //        if(swapBuffers)
 //        {
 //            //BIN1(1);
@@ -287,13 +315,6 @@ int main(void)
 //        
         
         
-        //Gestion des conditions de la lumiere
-         if (SWT_GetValue(0))
-         {
-            if (buffer69 < 200|| buffer69>900){RGBLED_SetValue(255,0,0);}
-            else{RGBLED_SetValue(0,255,0);}        
-         }
-         else{RGBLED_SetValue(255,35,0);}
         //BIN1(1);
         
     if (count == cstAvrg)
