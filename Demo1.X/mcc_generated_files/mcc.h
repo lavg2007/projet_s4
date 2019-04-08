@@ -51,10 +51,10 @@
 #include <stdbool.h>
 #include "interrupt_manager.h"
 #include "tmr3.h"
-#include "tmr2.h"
 #include "oc1.h"
+#include "tmr2.h"
 
-#define _XTAL_FREQ  192000000UL
+#define _XTAL_FREQ  8000000UL
 
 /**
  * @Param

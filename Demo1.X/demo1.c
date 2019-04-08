@@ -74,11 +74,12 @@
 const unsigned int freqSampling = 20000;
 const unsigned int freqTest = 1000;
 int32_t *currentInBuffer, *currentOutBuffer, bufferCount;
-int16_t buffer69; //16 bits
 bool swapBuffers, flagCap;
 int32_t stabValue1;
 char bufChar[10];
 int HScaleLog2 = 8;
+int32_t stabFreq; // valeur de sortie du capteur de frequence
+int32_t stabAmp; // valeur de sortie du capteur d'amplitude
 
 
 void Clear(int cap1,int cap2, int past_cap1,int past_cap2)
@@ -124,7 +125,13 @@ void lcdBlocks(int num1, int num2)
             }
         }
 }
-
+int32_t leaky(int32_t sum, int16_t val){
+    //integrateur fuyant avec facteur d'oubli de 0.5
+//   return((sum + val) >> 1 + (sum + val) >> 3);
+    
+        sum += val;
+        sum *= 0.45;
+}
 int main(void)
 {
     int32_t *previousInBuffer, *previousOutBuffer;
@@ -136,21 +143,20 @@ int main(void)
     char serialTest[12];
     int y,i = 0;
     int8_t buffer1[3] = {0,0,0};
+    int8_t buffer2[3] = {0,0,0};
     // initialize the device
     bufferCount = 0;
     swapBuffers = false;
     currentInBuffer = inBuffer1;
     currentOutBuffer = outBuffer1;
-    I2C_Init(100000); //initiallisation de la communication I2c a 1600hz
-    char askConti[3] = {0x01,0x04,0x83};
+    I2C_Init(150000); //initiallisation de la communication I2c a 1600hz
+    char askContiADC0[3] = {0x01,0x44,0x93};
+    char askContiADC1[3] = {0x01,0x54,0x93};
     char pointReg[2] = {0x90,0x00};
 
     char i2cin1 = '6';
     char i2cin2 = '6';
-    //Write to Config register:
-        i2cin1 = I2C_Write(0x4a,askConti,3,1);
-    //Set reading mode as continuous
-        i2cin1 = I2C_Write(0x4a,pointReg,2,1);
+    
     
     
     
@@ -168,13 +174,17 @@ int main(void)
     int cstAvrg = 9;
     int valuescap1[cstAvrg + 1];
     int valuescap2[cstAvrg + 1];
-    int stabValue2 = 0;
+    int stabValue2;
     int stabValue1_16;
     char toDisp1[64];
     char toDisp2[6];
     int m, n;
     int valMax = 0;
     int indxMax = 0;
+    int firfreq[32] ={0};
+    int firamp[32] ={0};
+    
+    bool capNum = false;
     
 
     //initialisation du tableau pour les valeurs du cap1
@@ -184,30 +194,117 @@ int main(void)
     }
     
     
+    
+    
     while (1)
     {
-        //BIN1(0);
-        //DEBUG FFT
-            //ISR
-            //Lecture des capteurs
-    
+        //Les deux capteurs ne peuvent pas etre lu dans mm cycle de lecture
+        // comprends pas, vrm pas
         if(flagCap)
         {
-            BIN1(1);
-            flagCap = false;
             address = 0x4a;
-            i2cOut = I2C_Read(address,buffer1,2);
-            buffer = buffer1[0];
-            buffer = buffer << 4 ;
-            buffer69 = buffer + (buffer1[1] >>4);
-            if (buffer69<100){
-                buffer69 = 100;
+            if(capNum == true){
+//                BIN1(1);
+                int8_t freqBuf[2];
+                int16_t freq;
+                
+                //Write to Config register:
+                I2C_Write(address,askContiADC0,3,1);
+                //Set reading mode as continuous for ADC 0
+                I2C_Write(address,pointReg,2,1);
+
+                I2C_Read(address,freqBuf,2);
+                buffer = freqBuf[0];
+                buffer = buffer << 4;
+                freq = buffer + (freqBuf[1] >>4);
+//                if (freq<150){
+//                    freq = 150;//stabFreq = leaky(stabFreq,150);
+//                }else if(freq>1000){
+//                   freq=1000;// stabFreq = leaky(stabFreq,1000);
+//                }else{
+//                    freq=freq;//stabFreq = leaky(stabFreq,freq);
+//                }  
+                
+                firfreq[15] = firfreq[14]; //>>1;
+                firfreq[14] = firfreq[13]; //>>1;
+                firfreq[13] = firfreq[12]; //>>1;
+                firfreq[12] = firfreq[11]; //>>1;
+                firfreq[11] = firfreq[10]; //>>1;
+                firfreq[10] = firfreq[9]; //>>1;
+                firfreq[9] = firfreq[8]; //>>1;
+                firfreq[8] = firfreq[7]; //>>1;
+                firfreq[7] = firfreq[6]; //>>1;
+                firfreq[6] = firfreq[5]; //>>1;
+                firfreq[4] = firfreq[3]; //>>1;                
+                firfreq[3] = firfreq[2]; //>>1;
+                firfreq[2] = firfreq[1]; //>>1;
+                firfreq[1] = firfreq[0];// >>1;
+                
+                int i,n;
+                stabValue2 = 0;
+                firfreq[0] = freq;
+                
+                for(n = 0;n < 16;n++){
+                    
+                    stabValue2 += (firfreq[n]); 
+                }
+                stabFreq  = stabValue2 >> 4;
+                LED_ToggleValue(3);
+                capNum = false;
+//                BIN1(0);
+            }else{
+//                BIN2(1);
+                int8_t ampBuf[2];
+                int16_t amp;
+                
+                //Write to Config register:
+                I2C_Write(address,askContiADC1,3,1);
+                //Set reading mode as continuous for ADC 0
+                I2C_Write(address,pointReg,2,1);
+
+
+                I2C_Read(address,ampBuf,2);
+                buffer = ampBuf[0];
+                buffer = buffer << 4 ;
+                amp = buffer + (ampBuf[1] >>4);
+//                if (amp<100){
+//                    amp = 100;// leaky(stabAmp,100);
+//                }else if(amp>1000){
+//                    amp = 1000;//leaky(stabAmp,1000);
+//                }else{
+//                    amp = amp;//leaky(stabAmp,amp);
+//                }
+                firamp[15] = firamp[14]; //>>1;
+                firamp[14] = firamp[13]; //>>1;
+                firamp[13] = firamp[12]; //>>1;
+                firamp[12] = firamp[11]; //>>1;
+                firamp[11] = firamp[10]; //>>1;
+                firamp[10] = firamp[9]; //>>1;
+                firamp[9] = firamp[8]; //>>1;
+                firamp[8] = firamp[7]; //>>1;
+                firamp[7] = firamp[6]; //>>1;
+                firamp[6] = firamp[5]; //>>1;
+                firamp[4] = firamp[3]; //>>1;                
+                firamp[3] = firamp[2]; //>>1;
+                firamp[2] = firamp[1]; //>>1;
+                firamp[1] = firamp[0];// >>1;
+                
+                int i,n;
+                stabValue1 = 0;
+                firamp[0] = amp;
+                
+                for(n = 0;n < 16;n++){
+                    
+                    stabValue1 += (firamp[n]); 
+                }
+                stabAmp  = (stabValue1 >> 4) + (stabValue1 >>5);
+                LED_ToggleValue(4);
+                capNum = true;
+                
             }
-            else if (buffer69>1000){
-                buffer69 = 1000;
-            }         
-            stabValue1 = buffer69;
-            BIN1(0);
+//               BIN2(0);
+            
+            flagCap = false;
         }
             
 //        if(swapBuffers)

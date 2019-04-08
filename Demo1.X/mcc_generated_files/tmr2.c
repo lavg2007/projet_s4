@@ -57,6 +57,7 @@
 #include "../LUT_phase.h"
 #include <stdio.h>
 #include "../filterIIRcoeffs.h"
+#include "../config.h"
 /**
   Section: Data Type Definitions
 */
@@ -100,8 +101,8 @@ void TMR2_Initialize (void)
     // TMR2 0; 
     counter = 0;
     TMR2 = 0x0;
-    // Period = 0.00005 s; Frequency = 192000000 Hz; PR2 9600; 
-    PR2 = 0x2580;
+    // Period = 0.00025 s; Frequency = 8000000 Hz; PR2 2000; 
+    PR2 = 0x7D0;
     // TCKPS 1:1; T32 16 Bit; TCS PBCLK; SIDL disabled; TGATE disabled; ON enabled; 
     T2CON = 0x8000;
     phase = 0;
@@ -112,20 +113,29 @@ void TMR2_Initialize (void)
     tmr2_obj.timerElapsed = false;
    
 }
+extern int32_t stabFreq;
+extern int32_t stabAmp;
 
 
 void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
 {
-     // BIN1(1);
+      BIN1(1);
     //***User Area Begin
 //    phase = (phase + LUT_phase[500]) % 32768;
     
     
-    phase = phase + LUT_phase[stabValue1];
+    phase = phase + LUT_phase[stabFreq];
     if(phase >= SINE_RANGE)
         phase -= SINE_RANGE;
-    currentInBuffer[bufferCount] = LUT_sin[phase];
-    
+    if((prt_SWT_SWT6 == 1) && (prt_SWT_SWT7 == 1)){
+        currentInBuffer[bufferCount] = LUT_sin_guit[phase]*0.6*stabAmp/1024;
+    }else if((prt_SWT_SWT6 == 1) && (prt_SWT_SWT7 == 0)){
+        currentInBuffer[bufferCount] = LUT_sin[phase] * stabAmp/1300;
+    }else if((prt_SWT_SWT6 == 0) && (prt_SWT_SWT7 == 1)){
+        currentInBuffer[bufferCount] = LUT_Tri[phase] * stabAmp/1300;
+    }else{
+        currentInBuffer[bufferCount] = LUT_sin_guit2[phase] * stabAmp/1300;
+    }
     OC1_PWMPulseWidthSet(((currentInBuffer[bufferCount]+SINE_RANGE)*PR3)>>SINE_LOG);
     counter += 1;
     if(counter >= 200)
@@ -133,7 +143,7 @@ void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
         flagCap = true;
         counter = 0;
     }    
-    //BIN1(0); 
+//    BIN1(0); 
 //  
     if(bufferCount >= SIG_LEN)
     {    
@@ -145,7 +155,7 @@ void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
 //    sprintf(serialTest,"%d",bufferCount);
     
 //      UART_PutString(serialTest);
-    //BIN1(0);
+    BIN1(0);
     //***User Area End
 
     tmr2_obj.count++;
