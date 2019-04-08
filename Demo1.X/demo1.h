@@ -15,7 +15,7 @@ extern "C" {
 #define fftc            fft32c1024
 #define LOG2FFTLEN      10
 #define FFT_LEN         1024
-#define SIG_LEN         768
+#define SIG_LEN         64
 #define H_LEN           256
 #define SINE_LOG        12
 #define SINE_RANGE      2048

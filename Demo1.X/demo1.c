@@ -58,6 +58,7 @@
 #include "utils.h"
 #include "rgbled.h"
 #include "swt.h"
+//#include "app_commands.h"
 
 #define BAUD_RATE 9600
 #define RECEIVE_BUFFER_LEN  1024
@@ -105,12 +106,26 @@ void Clear(int cap1,int cap2, int past_cap1,int past_cap2)
 //        DelayAprox10Us(300);
 }
 
- int Val_016(int val)
+int val_016(int val)       //Fonction écrite par Phil
 {
     int value;
-    if (val<=100) value=0;
-    else if (val> 924) value =16;
-    else value = (((val))/50)-2;
+    if (value<=150) value =0;
+	else if (value>150 && value<=200) value=1;
+	else if (value>200 && value<=250) value=2;
+	else if (value>250 && value<=300) value=3;
+	else if (value>300 && value<=350) value=4;
+	else if (value>350 && value<=400) value=5;
+	else if (value>150 && value<=450) value=6;
+	else if (value>450 && value<=500) value=7;
+	else if (value>150 && value<=550) value=8;
+	else if (value>550 && value<=600) value=9;
+	else if (value>150 && value<=650) value=10;
+	else if (value>650 && value<=700) value=11;
+	else if (value>150 && value<=750) value=12;
+	else if (value>750 && value<=800) value=13;
+	else if (value>150 && value<=850) value=14;
+	else if (value>850 && value<=900) value=15;
+	else value =16;
     return value;
 }
 
@@ -183,7 +198,8 @@ int main(void)
     int indxMax = 0;
     int firfreq[32] ={0};
     int firamp[32] ={0};
-    
+    int stabAmp_16;
+    int stabFreq_16;
     bool capNum = false;
     
 
@@ -204,7 +220,6 @@ int main(void)
         {
             address = 0x4a;
             if(capNum == true){
-//                BIN1(1);
                 int8_t freqBuf[2];
                 int16_t freq;
                 
@@ -217,13 +232,7 @@ int main(void)
                 buffer = freqBuf[0];
                 buffer = buffer << 4;
                 freq = buffer + (freqBuf[1] >>4);
-//                if (freq<150){
-//                    freq = 150;//stabFreq = leaky(stabFreq,150);
-//                }else if(freq>1000){
-//                   freq=1000;// stabFreq = leaky(stabFreq,1000);
-//                }else{
-//                    freq=freq;//stabFreq = leaky(stabFreq,freq);
-//                }  
+//                
                 
                 firfreq[15] = firfreq[14]; //>>1;
                 firfreq[14] = firfreq[13]; //>>1;
@@ -248,12 +257,19 @@ int main(void)
                     
                     stabValue2 += (firfreq[n]); 
                 }
-                stabFreq  = stabValue2 >> 4;
+                stabValue2 = stabValue2 >> 4;
+                if (stabValue2<150){
+                    stabFreq  = 150;//stabFreq = leaky(stabFreq,150);
+                }else if(stabValue2>1000){
+                   stabFreq  = 1000;// stabFreq = leaky(stabFreq,1000);
+                }else{
+                    stabFreq  = stabValue2;//stabFreq = leaky(stabFreq,freq);
+                }  
+                
+                
                 LED_ToggleValue(3);
                 capNum = false;
-//                BIN1(0);
             }else{
-//                BIN2(1);
                 int8_t ampBuf[2];
                 int16_t amp;
                 
@@ -302,115 +318,59 @@ int main(void)
                 capNum = true;
                 
             }
-//               BIN2(0);
             
             flagCap = false;
         }
             
-//        if(swapBuffers)
-//        {
-//            //BIN1(1);
-//            LED_ToggleValue(3);
-//            IEC0bits.T2IE = false;
-//            if (currentInBuffer == inBuffer1) {
-//                currentInBuffer = inBuffer2;
-//                currentOutBuffer = outBuffer2;
-//                previousInBuffer = inBuffer1;
-//                previousOutBuffer = outBuffer1;
-//            } else {
-//                currentInBuffer = inBuffer1;
-//                currentOutBuffer = outBuffer1;
-//                previousInBuffer = inBuffer2;
-//                previousOutBuffer = outBuffer2;
+        if(swapBuffers)
+        {
+//            BIN1(1);
+            BIN1(1);
+            LED_ToggleValue(1);
+////            IEC0bits.T2IE = false;
+            if (currentInBuffer == inBuffer1) {
+                previousInBuffer = inBuffer1;
+                currentInBuffer = inBuffer2;
+            } else {
+                currentInBuffer = inBuffer1;
+                previousInBuffer = inBuffer2;
+            }
+            //PACKETIZE
+//            int countECH;
+//            for(countECH=0,i=0;1<SIG_LEN;countECH++,i+=4){
+//                UDP_Send_Buffer[i]= ((previousInBuffer[countECH] &  0x000000ff));
+//                UDP_Send_Buffer[i+1]=((previousInBuffer[countECH] & 0x0000ff00)>>8);
+//                UDP_Send_Buffer[i+2]=((previousInBuffer[countECH] & 0x00ff0000)>>16);
+//                UDP_Send_Buffer[i+3]=((previousInBuffer[countECH] & 0xff000000)>>24);
 //            }
-//            for (n = 0; n < SIG_LEN; n++) {
-//                previousOutBuffer[n] = currentInBuffer[n];
-//            }
-//        //FFT pour preparer a la multiplication
-////            for (n = 0, m = SIG_LEN - H_LEN; n < H_LEN; n++, m++) {
-////                inFFT[n].re = currentOutBuffer[m] * FFT_LEN;
-////                inFFT[n].im = 0;
-////            }
-////            for (m = 0; m < SIG_LEN; m++, n++) {
-////                inFFT[n].re = previousOutBuffer[m] * FFT_LEN;
-////                inFFT[n].im = 0;
-////            }
-////            mips_fft32(outFFT, inFFT, (int32c *) fftc, Scratch, LOG2FFTLEN); //la sortie de la FFT mesure 1024 element
-////
-////            
-////            //Trouver l'index de la valuer maximale
-////            for(n = 0;n < (SIG_LEN - H_LEN);n++) {
-////                if(inFFT[n].re > valMax){
-////                    indxMax = n;
-////                    valMax = inFFT[n].re;
-////                }
-////                        
-////            }
-//            
-//            
-//            //FFT inverse si on a besoin plus tard
-//            /*
-//            if (SW0()) {
-//                // FIR Filtering with Y = HX, actually (HX)* in preparation for inverse FFT using forward FFT    operation
-//                // *** VOTRE CODE ICI: BOUCLE FOR MANQUANTE... ***
-//                
-//                //passer dans un filtre d'ordre 2 H(m) c'est donc une simple multiplication dans le domaine imaginaire
-//                //(a+bi)(c+di) 	= (ac - bd) + (ad + bc)i
-//                for(n = 0; n < FFT_LEN; n++){
-//                   inFFT[n].re = (outFFT[n].re * H[n].re - outFFT[n].im * H[n].im);
-//                   inFFT[n].im = -(outFFT[n].re * H[n].im + outFFT[n].im * H[n].re); //  le moins (-) c'est pour le conjugue complexe
-//                }
-//            } else {
-//                // Simply pass-through of X* in preparation for inverse FFT using forward FFT operation
-//                for (n = 0; n < FFT_LEN; n++) { // Conjugaison complexe de la multiplication
-//                    inFFT[n].re = outFFT[n].re;
-//                    inFFT[n].im = -outFFT[n].im;
-//                }
-//            }
-//            
-//            mips_fft32(outFFT, inFFT, (int32c *) fftc, Scratch, LOG2FFTLEN);
-//
-//            // Extract real part of the inverse FFT, discard first 1/4 (H_LEN) samples as per the "Overlap-and-save" method, remove H scaling
-//            if (SW0()) {
-//                for (n = 0; n < SIG_LEN; n++)
-//                    previousOutBuffer[n] = ((int) (outFFT[n + H_LEN].re)) >> HScaleLog2;
-//            } else {
-//                for (n = 0; n < SIG_LEN; n++)
-//                    previousOutBuffer[n] = outFFT[n + H_LEN].re;
-//            }
-//             */
-//            
-//            IEC0bits.T2IE = true;
-//            swapBuffers = false;
-//            //BIN1(0);
-//        }
-        //STUFF D'AFFICHAGE ET LECTURE CAPTEUR      
-        
-        
-       
-        //test pour faire un integrateur fuillant au lieu de faire une moyenne
-        //on trouve les nouvelles valeurs
-//        stabValue1 *=0.4; // ajuster le coeff
-        
-        //equivalent de l'integrateur mais sur une val de 0 a 16
-//        stabValue1_16 = Val_016(buffer69);
-////        stabValue2 +=  Val_016(18);
-////        stabValue2 *= 0.6;
-//        //stabValue1_16 = 0;//Val_016(buffer69_2); --> adapter pour le deuxieme capteur
-//        stabValue2 = 0;
+            
+            
+            swapBuffers = false;
+            //export previous buffer
+            BIN1(0);
+        }
+//        //STUFF D'AFFICHAGE ET LECTURE CAPTEUR      
 //        
-//        //check si faut clear le display
+//        
+//       
+//        //test pour faire un integrateur fuillant au lieu de faire une moyenne
+//        //on trouve les nouvelles valeurs
+//        stabFreq_16 = Val_016(stabFreq);
+//        stabAmp_16 = Val_016(stabAmp);
+//        
+////        
+////        //check si faut clear le display
 //        Clear(stabValue1_16,stabValue2,past_cap1,past_cap2);
-//        
-//        //on save la derniere valeur pour faire des comparaisons plus tar
-//        past_cap1 = stabValue1_16;
-//        past_cap2 = stabValue2;
-//        
-//        //update du display
+////        
+////        //on save la derniere valeur pour faire des comparaisons plus tar
+//        past_cap1 = stabFreq_16;
+//        past_cap2 = stabAmp_16;
+////        
+////        //update du display
 //        lcdBlocks(stabValue1_16,stabValue2);
+////        
+////        
 //        
-//        
-        
         
         //BIN1(1);
         

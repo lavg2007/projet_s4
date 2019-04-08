@@ -119,7 +119,8 @@ extern int32_t stabAmp;
 
 void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
 {
-      BIN1(1);
+      BIN2(1);
+//    LATBbits.LATB5 = 1;
     //***User Area Begin
 //    phase = (phase + LUT_phase[500]) % 32768;
     
@@ -127,14 +128,20 @@ void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
     phase = phase + LUT_phase[stabFreq];
     if(phase >= SINE_RANGE)
         phase -= SINE_RANGE;
-    if((prt_SWT_SWT6 == 1) && (prt_SWT_SWT7 == 1)){
+    if((prt_SWT_SWT5 == 1) && (prt_SWT_SWT6 == 1)&& (prt_SWT_SWT7 == 1)){
         currentInBuffer[bufferCount] = LUT_sin_guit[phase]*0.6*stabAmp/1024;
-    }else if((prt_SWT_SWT6 == 1) && (prt_SWT_SWT7 == 0)){
+    }else if((prt_SWT_SWT5 == 0) && (prt_SWT_SWT6 == 1)&& (prt_SWT_SWT7 == 1)){
         currentInBuffer[bufferCount] = LUT_sin[phase] * stabAmp/1300;
-    }else if((prt_SWT_SWT6 == 0) && (prt_SWT_SWT7 == 1)){
+    }else if((prt_SWT_SWT5 == 1) && (prt_SWT_SWT6 == 0)&& (prt_SWT_SWT7 == 1)){
         currentInBuffer[bufferCount] = LUT_Tri[phase] * stabAmp/1300;
-    }else{
+    }else if((prt_SWT_SWT5 == 0) && (prt_SWT_SWT6 == 0)&& (prt_SWT_SWT7 == 1)){
         currentInBuffer[bufferCount] = LUT_sin_guit2[phase] * stabAmp/1300;
+    }else if((prt_SWT_SWT5 == 1) && (prt_SWT_SWT6 == 1)&& (prt_SWT_SWT7 == 0)){
+        currentInBuffer[bufferCount] = LUT_square[phase] * stabAmp/1300;
+    }else if((prt_SWT_SWT5 == 0) && (prt_SWT_SWT6 == 1)&& (prt_SWT_SWT7 == 0)){
+//        currentInBuffer[bufferCount] = LUT_sin_guit3[phase] * stabAmp/1300;
+    }else{
+        currentInBuffer[bufferCount] = LUT_sin_sax[phase] * stabAmp/1300;   
     }
     OC1_PWMPulseWidthSet(((currentInBuffer[bufferCount]+SINE_RANGE)*PR3)>>SINE_LOG);
     counter += 1;
@@ -144,7 +151,9 @@ void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
         counter = 0;
     }    
 //    BIN1(0); 
-//  
+    BIN2(0);
+
+    
     if(bufferCount >= SIG_LEN)
     {    
         bufferCount = 0;
@@ -155,7 +164,7 @@ void __ISR(_TIMER_2_VECTOR, IPL1AUTO) _T2Interrupt (  )
 //    sprintf(serialTest,"%d",bufferCount);
     
 //      UART_PutString(serialTest);
-    BIN1(0);
+//    LATBbits.LATB5 = 0;
     //***User Area End
 
     tmr2_obj.count++;
