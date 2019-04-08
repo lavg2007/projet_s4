@@ -59,7 +59,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "system_config.h"
 #include "system/common/sys_module.h"   // SYS function prototypes
 #include "driver/spi/src/dynamic/drv_spi_internal.h"
-#include "../test_IP_Harmony.X/swt.h"
+#include "../Theremax.X/swt.h"
 #include "UDP_app.h"
 #include "led.h"
 #include "lcd.h"

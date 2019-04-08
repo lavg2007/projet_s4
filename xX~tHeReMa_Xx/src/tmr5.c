@@ -53,7 +53,7 @@
 #include "tmr5.h"
 #include <math.h>
 #include "main.h"
-#include "../test_IP_Harmony.X/LUT_phase.h"
+#include "../Theremax.X/LUT_phase.h"
 #include <stdio.h>
 #include "oc1.h"
 #include "pin_manager.h"
@@ -119,11 +119,12 @@ void TMR5_Initialize (void)
 
 void __ISR(_TIMER_5_VECTOR, IPL1AUTO) _T5Interrupt (  )
 {
-    phase = phase + LUT_phase[stabFreq];
+    phase = phase + LUT_phase[300];
+    stabAmp = 1300;
     if(phase >= SINE_RANGE)
         phase -= SINE_RANGE;
     if((prt_SWT_SWT5 == 1) && (prt_SWT_SWT6 == 1)&& (prt_SWT_SWT7 == 1)){
-        currentInBuffer[bufferCount] = LUT_sin_guit[phase]*0.6*stabAmp/1024;
+        currentInBuffer[bufferCount] = LUT_sin_guit[phase]*0.6*stabAmp/1300;
     }else if((prt_SWT_SWT5 == 0) && (prt_SWT_SWT6 == 1)&& (prt_SWT_SWT7 == 1)){
         currentInBuffer[bufferCount] = LUT_sin[phase] * stabAmp/1300;
     }else if((prt_SWT_SWT5 == 1) && (prt_SWT_SWT6 == 0)&& (prt_SWT_SWT7 == 1)){

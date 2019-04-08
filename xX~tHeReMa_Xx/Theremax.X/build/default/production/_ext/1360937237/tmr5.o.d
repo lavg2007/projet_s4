@@ -361,7 +361,7 @@ build/default/production/_ext/1360937237/tmr5.o:  \
  ../src/system_config/default/framework/tcpip/tftps.h  \
  ../src/system_config/default/framework/driver/ethmac/drv_ethmac.h  \
  ../src/main.h  \
-../src/../test_IP_Harmony.X/LUT_phase.h  \
+../src/../Theremax.X/LUT_phase.h  \
 ../src/oc1.h  \
  ../src/pin_manager.h  \
 ../src/led.h  \
