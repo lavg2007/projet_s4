@@ -83,12 +83,13 @@ extern "C" {
     This enumeration defines the valid application states.  These states
     determine the behavior of the application at various times.
 */
-#define SIG_LEN 64
+#define SIG_LEN 256
 extern int32_t *currentInBuffer, bufferCount;
 extern int16_t buffer69; //16 bits
-extern bool swapBuffers, flagCap;
+extern bool swapBuffers, flagCap, flagSound;
 extern int32_t stabFreq; // valeur de sortie du capteur de frequence
 extern int32_t stabAmp; // valeur de sortie du capteur d'amplitude
+extern int8_t instr;
 
 typedef enum
 {

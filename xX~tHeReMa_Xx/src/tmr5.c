@@ -58,6 +58,7 @@
 #include "oc1.h"
 #include "pin_manager.h"
 #include "led.h"
+#include "UDP_app.h"
 
 /**
   Section: Data Type Definitions
@@ -77,10 +78,11 @@
   Remarks:
     None.
 */
-static int counter;
+static int counter, countSound;
 int testBuffer[1024];
 int phase;
 bool flagCap;
+
 
 typedef struct _TMR_OBJ_STRUCT
 {
@@ -102,16 +104,19 @@ void TMR5_Initialize (void)
 {
     // TMR5 0; 
     counter = 0;
+    countSound = 0;
+    flagSound = true;
+    instr = 0;
+    flagCap = false;
+    phase = 0;
     TMR5 = 0x0;
     // Period = 0.0000104167 s; Frequency = 192000000 Hz; PR5 2001; 
-    PR5 = 0x3E8;
+    PR5 = 1000;
     // TCKPS 1:1; T32 16 Bit; TCS PBCLK; SIDL disabled; TGATE disabled; ON enabled; 
     T5CON = 0x8000;
-    phase = 0;
     IFS0CLR= 1 << _IFS0_T5IF_POSITION;
     IEC0bits.T5IE = true;
-//    IEC0bits.T5IE = false;
-	flagCap = false;
+//    IEC0bits.T5IE = false
     tmr5_obj.timerElapsed = false;
    
 }
@@ -119,27 +124,52 @@ void TMR5_Initialize (void)
 
 void __ISR(_TIMER_5_VECTOR, IPL1AUTO) _T5Interrupt (  )
 {
-    phase = phase + LUT_phase[300];
+//    BIN1(1);
+    phase = phase + LUT_phase[stabFreq];
     stabAmp = 1300;
     if(phase >= SINE_RANGE)
         phase -= SINE_RANGE;
-    if((prt_SWT_SWT5 == 1) && (prt_SWT_SWT6 == 1)&& (prt_SWT_SWT7 == 1)){
-        currentInBuffer[bufferCount] = LUT_sin_guit[phase]*0.6*stabAmp/1300;
-    }else if((prt_SWT_SWT5 == 0) && (prt_SWT_SWT6 == 1)&& (prt_SWT_SWT7 == 1)){
-        currentInBuffer[bufferCount] = LUT_sin[phase] * stabAmp/1300;
-    }else if((prt_SWT_SWT5 == 1) && (prt_SWT_SWT6 == 0)&& (prt_SWT_SWT7 == 1)){
-        currentInBuffer[bufferCount] = LUT_Tri[phase] * stabAmp/1300;
-    }else if((prt_SWT_SWT5 == 0) && (prt_SWT_SWT6 == 0)&& (prt_SWT_SWT7 == 1)){
-        currentInBuffer[bufferCount] = LUT_sin_guit2[phase] * stabAmp/1300;
-    }else if((prt_SWT_SWT5 == 1) && (prt_SWT_SWT6 == 1)&& (prt_SWT_SWT7 == 0)){
-        currentInBuffer[bufferCount] = LUT_square[phase] * stabAmp/1300;
-    }else if((prt_SWT_SWT5 == 0) && (prt_SWT_SWT6 == 1)&& (prt_SWT_SWT7 == 0)){
-//        currentInBuffer[bufferCount] = LUT_sin_guit3[phase] * stabAmp/1300;
-    }else{
-        currentInBuffer[bufferCount] = LUT_sin_sax[phase] * stabAmp/1300;   
+    switch (instr)
+    {
+        case 0:
+            currentInBuffer[bufferCount] = LUT_sin[phase] * stabAmp/1300;   
+//            currentInBuffer[bufferCount] = 0;   
+            break;
+        case 1:
+            currentInBuffer[bufferCount] = LUT_square[phase] * stabAmp/1300;
+            
+            break;
+        case 2:
+            currentInBuffer[bufferCount] = LUT_Tri[phase] * stabAmp/1300;
+            break;
+        case 3:
+            currentInBuffer[bufferCount] = LUT_sin_guit2[phase] * stabAmp/1300;
+            break;
+        case 4:
+            currentInBuffer[bufferCount] = LUT_sin_guit[phase]*0.6*stabAmp/1300;
+            break;
+        case 5 :   
+            currentInBuffer[bufferCount] = LUT_sin_sax[phase] * stabAmp/1300;
+            break;
     }
-    OC1_PWMPulseWidthSet(((currentInBuffer[bufferCount]+SINE_RANGE)*PR3)>>SINE_LOG);
-    counter += 1;
+    
+//    if(flagSound){
+        OC1_PWMPulseWidthSet(((previousUDPBuffer[countSound]+SINE_RANGE)*PR3)>>SINE_LOG);
+        countSound++;
+//    }
+    if(countSound >= SIG_LEN){
+//        BIN1(1);
+        if (currentUDPBuffer == UDP_Receive_Buffer1){
+            previousUDPBuffer = UDP_Receive_Buffer1;
+            currentUDPBuffer = UDP_Receive_Buffer2;
+        }else {
+            currentUDPBuffer = UDP_Receive_Buffer1;
+            previousUDPBuffer = UDP_Receive_Buffer2;
+        }
+        countSound = 0;
+//        BIN1(0);
+    }
+    
     if(counter >= 200)
     {
         flagCap = true;
@@ -150,9 +180,10 @@ void __ISR(_TIMER_5_VECTOR, IPL1AUTO) _T5Interrupt (  )
     {    
         bufferCount = 0;
         swapBuffers = true;
-    }   
+    }
     bufferCount += 1;
-
+    counter += 1;
+//    BIN1(0);
     tmr5_obj.timerElapsed = true;
     IFS0CLR= 1 << _IFS0_T5IF_POSITION;
 }

@@ -365,4 +365,6 @@ build/default/production/_ext/1360937237/tmr5.o:  \
 ../src/oc1.h  \
  ../src/pin_manager.h  \
 ../src/led.h  \
-../src/config.h 
+../src/config.h  \
+../src/UDP_app.h  \
+ ../src/app_commands.h 

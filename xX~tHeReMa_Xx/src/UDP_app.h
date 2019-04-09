@@ -59,6 +59,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdlib.h>
 #include "system_config.h"
 #include "system_definitions.h"
+#include "app_commands.h"
 
 // *****************************************************************************
 // *****************************************************************************
@@ -76,6 +77,16 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
     This enumeration defines the valid application states.  These states
     determine the behavior of the application at various times.
 */
+
+int32_t UDP_Receive_Buffer_Int[MAX_PACKET_SIZE+1];
+int8_t UDP_Receive_Buffer_Int1[MAX_PACKET_SIZE+1];
+int8_t UDP_Receive_Buffer_Int2[MAX_PACKET_SIZE+1];
+int8_t UDP_Receive_Buffer_Int3[MAX_PACKET_SIZE+1];
+int8_t UDP_Receive_Buffer_Int4[MAX_PACKET_SIZE+1];
+int8_t UDP_Receive_Buffer_Int5[MAX_PACKET_SIZE+1];
+extern int32_t *previousUDPBuffer,*currentUDPBuffer;
+extern int32_t UDP_Receive_Buffer2[], UDP_Receive_Buffer1[];
+
 
 typedef enum
 {

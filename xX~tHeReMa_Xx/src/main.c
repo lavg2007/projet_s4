@@ -69,6 +69,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "oc1.h"
 #include "i2c.h"
 #include "pin_manager.h"
+#include "../Theremax.X/btn.h"
 // *****************************************************************************
 // *****************************************************************************
 // Section: Global Data Definitions
@@ -79,6 +80,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 int32_t *currentInBuffer, bufferCount;
 int16_t buffer69; //16 bits
 bool swapBuffers, flagCap;
+static bool btnDb;
 int32_t stabFreq; // valeur de sortie du capteur de frequence
 int32_t stabAmp; // valeur de sortie du capteur d'amplitude
 
@@ -124,7 +126,6 @@ MAIN_DATA mainData;
 
 
         static unsigned long int counter=0;
-        static bool sw0_old; 
 
 
 // *****************************************************************************
@@ -182,7 +183,7 @@ void MAIN_Initialize ( void )
     PIN_MANAGER_Initialize();
     //OSCILLATOR_Initialize();
     SWT_Init();
-   
+    BTN_Init();
     TMR5_Initialize();
     TMR3_Initialize();
     OC1_Initialize();
@@ -192,6 +193,7 @@ void MAIN_Initialize ( void )
     INTERRUPT_Initialize();    /* TODO: Initialize your application's state machine and other
      * parameters.
      */
+    LED_SetValue(0,1);
 }
 
 int val_016(int32_t val)       //Fonction écrite par Phil
@@ -221,13 +223,11 @@ void Clear(int cap1,int cap2, int past_cap1,int past_cap2)
         if (past_cap1 > cap1)
         {
             LCD_DisplayClear();
-            LED_ToggleValue(4);
         }
         
         if (past_cap2 > cap2)
         {
             LCD_DisplayClear();
-            LED_ToggleValue(5);
         }
         past_cap1 = cap1;
         past_cap2 = cap2;
@@ -243,6 +243,8 @@ void lcdBlocks(int num1, int num2)
             }
         }
 }
+//affichage de l'instrument choisi
+
 
 static void LedTask(void) {
     if (global_event_triggered(&global_events.tic_toc)) {
@@ -293,7 +295,7 @@ void MAIN_Tasks ( void )
         {
             UDP_Tasks();
             //LedTask();
-            LED0Toggle();
+            //LED0Toggle();
             JB1Toggle();        //LED heartbeat
             
             global_events.tic_toc = true;
@@ -337,9 +339,24 @@ int main(void) {
     while (1) {
         SYS_Tasks();
         MAIN_Tasks();
+        if (!BTN_GetValue('d') && btnDb)
+            btnDb = false;
+        if (BTN_GetValue('d') && !btnDb)
+            {
+                LED_ToggleValue(instr);
+                btnDb = true;
+                ++instr;
+                if (instr > 5)
+                    instr = 0;
+                LED_ToggleValue(instr);
+            }
+        // swap des buffer de réception
+        
+        // swap des buffers de génération
         if(swapBuffers)
         {
-            BIN1(1);
+           
+            
             //LED_ToggleValue(1);
 ////            IEC0bits.T2IE = false;
             if (currentInBuffer == inBuffer1) {
@@ -349,21 +366,24 @@ int main(void) {
                 currentInBuffer = inBuffer1;
                 previousInBuffer = inBuffer2;
             }
+           
             //PACKETIZE
             int countECH,i;            
             for(countECH=0,i=0;countECH<SIG_LEN;countECH++,i+=4){
                 UDP_Send_Buffer[i]= ((previousInBuffer[countECH] &  0x000000ff));
-                UDP_Send_Buffer[i+1]=((previousInBuffer[countECH] & 0x0000ff00)>>8);
-                UDP_Send_Buffer[i+2]=((previousInBuffer[countECH] & 0x00ff0000)>>16);
-                UDP_Send_Buffer[i+3]=((previousInBuffer[countECH] & 0xff000000)>>24);
+                UDP_Send_Buffer[i+1]=((previousInBuffer[countECH]>>8) & 0x000000ff);
+                UDP_Send_Buffer[i+2]=((previousInBuffer[countECH]>>16) & 0x000000ff);
+                UDP_Send_Buffer[i+3]=((previousInBuffer[countECH]>>24) & 0x000000ff);
             }
-            UDP_bytes_to_send = countECH*4;
+            UDP_bytes_to_send = (countECH)*4;
             countECH = 0;
             UDP_Send_Packet = true;          
             
             swapBuffers = false;
+            //compteur pour affichage instrument
+            
             //export previous buffer
-            BIN1(0);
+
         }
         if(flagCap)
         {
@@ -409,7 +429,7 @@ int main(void) {
                 stabFreq = (stabValue2 >> 4);
                 
                 
-                LED_ToggleValue(3);
+                
                 capNum = false;
             }else{
                 int8_t ampBuf[2];
@@ -456,7 +476,7 @@ int main(void) {
                     stabValue1 += (firamp[n]); 
                 }
                 stabAmp  = (stabValue1 >> 4);
-                LED_ToggleValue(4);
+                
                 capNum = true;
                 
             }
@@ -464,23 +484,21 @@ int main(void) {
             flagCap = false;
             vf_016 = val_016(stabFreq);
             va_016 = val_016(stabAmp);
-            NVBA++;
+//            NVBA++;
         }
         
-        if (NVBA  == 25) {
             
-        
-            
-        Clear(vf_016,va_016,vpf_016,vpa_016); 
-        
-        lcdBlocks(vf_016,va_016);
-        
-        
-        vpf_016 = vf_016;
-        vpa_016 = va_016;
-        
-        LED_ToggleValue(1);
-        NVBA = 0;
+        if (NVBA  >= 25) {
+          
+            Clear(vf_016,va_016,vpf_016,vpa_016); 
+
+            lcdBlocks(vf_016,va_016);
+
+
+            vpf_016 = vf_016;
+            vpa_016 = va_016;
+
+            NVBA = 0;
         }
 
     };

@@ -56,17 +56,18 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "UDP_app.h"
 #include "tcpip/tcpip.h"
 #include "config.h"
-
+#include "main.h"
+#include "tmr5.h"
 #include "app_commands.h"
 #define SERVER_PORT 8080
 
-uint32_t UDP_Receive_Buffer_Int[MAX_PACKET_SIZE+1];
-uint8_t UDP_Receive_Buffer_Int1[MAX_PACKET_SIZE+1];
-uint8_t UDP_Receive_Buffer_Int2[MAX_PACKET_SIZE+1];
-uint8_t UDP_Receive_Buffer_Int3[MAX_PACKET_SIZE+1];
-uint8_t UDP_Receive_Buffer_Int4[MAX_PACKET_SIZE+1];
-uint8_t UDP_Receive_Buffer_Int5[MAX_PACKET_SIZE+1];
+
 int8_t _UDP_PumpDNS(const char * hostname, IPV4_ADDR *ipv4Addr);
+int8_t instr;
+bool flagInstr;
+int32_t UDP_Receive_Buffer2[SIG_LEN], UDP_Receive_Buffer1[SIG_LEN];
+int32_t *previousUDPBuffer,*currentUDPBuffer;
+bool flagSound;
 // *****************************************************************************
 // *****************************************************************************
 // Section: Global Data Definitions
@@ -128,14 +129,14 @@ void UDP_Initialize(void) {
     UDP_Commands_Init();
     appData.clientState = UDP_TCPIP_WAIT_INIT;
     appData.serverState = UDP_TCPIP_WAIT_INIT;
-
+    currentUDPBuffer = UDP_Receive_Buffer1;
+    previousUDPBuffer = UDP_Receive_Buffer2;
     IPV4_ADDR addr;
     TCPIP_Helper_StringToIPAddress(UDP_Hostname_Buffer, &addr);
     uint16_t port = atoi(UDP_Port_Buffer);
     appData.clientSocket = TCPIP_UDP_ClientOpen(IP_ADDRESS_TYPE_IPV4,
     port,
     (IP_MULTI_ADDRESS*) & addr);
-    
             
     /* TODO: Initialize your application's state machine and other
      */
@@ -143,6 +144,7 @@ void UDP_Initialize(void) {
 }
 
 void _UDP_ClientTasks() {
+    
     switch (appData.clientState) {
         case UDP_TCPIP_WAITING_FOR_COMMAND:
         {
@@ -164,6 +166,7 @@ void _UDP_ClientTasks() {
                     }
 //                    SYS_CONSOLE_MESSAGE("\r\nClient: Starting connection\r\n");
                     appData.clientState = UDP_TCPIP_WAIT_FOR_CONNECTION;
+                    
                     break;
                 }
                 if (result < 0) {
@@ -217,7 +220,7 @@ void _UDP_ClientTasks() {
                 break;
             }
 
-            //UDP_bytes_to_send = strlen(UDP_Send_Buffer);
+           // UDP_bytes_to_send = strlen(UDP_Send_Buffer);
 //            SYS_CONSOLE_PRINT("Client: Sending %s\r\n", UDP_Send_Buffer);
             TCPIP_UDP_ArrayPut(appData.clientSocket, UDP_Send_Buffer, UDP_bytes_to_send);
             TCPIP_UDP_Flush(appData.clientSocket);
@@ -228,6 +231,7 @@ void _UDP_ClientTasks() {
 
         case UDP_TCPIP_WAIT_FOR_RESPONSE:
         {
+            
             //char buffer[180];
             //memset(UDP_Receive_Buffer, 0, sizeof(UDP_Receive_Buffer));
             if (SYS_TMR_SystemCountGet() > appData.mTimeOut) {
@@ -243,16 +247,45 @@ void _UDP_ClientTasks() {
             }
             uint16_t UDP_bytes_received = TCPIP_UDP_GetIsReady(appData.clientSocket);
             if (UDP_bytes_received) {
-                
+                memset(currentUDPBuffer,0,sizeof(currentUDPBuffer));
                 TCPIP_UDP_ArrayGet(appData.clientSocket, (uint8_t*) UDP_Receive_Buffer, sizeof (UDP_Receive_Buffer) - 1);
                 int i;
-                for (i = 0; i <120; i++){
-                    UDP_Receive_Buffer_Int1[i] = UDP_Receive_Buffer[4*i];//-48;
-                    UDP_Receive_Buffer_Int2[i] = UDP_Receive_Buffer[4*i+1];//-48;
-                    UDP_Receive_Buffer_Int3[i] = UDP_Receive_Buffer[4*i+2];//-48;
-                    UDP_Receive_Buffer_Int4[i] = UDP_Receive_Buffer[4*i+3];//-48;
-                    UDP_Receive_Buffer_Int[i]  = UDP_Receive_Buffer_Int1[i] & 0x000000ff | ((uint32_t)UDP_Receive_Buffer_Int2[i] << 8) & 0x0000ff00 | ((uint32_t)UDP_Receive_Buffer_Int3[i] << 16) & 0x00ff0000 | ((uint32_t)UDP_Receive_Buffer_Int4[i] << 24) & 0xff000000;
-                                    }              
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                for (i = 0; i <SIG_LEN; i++){
+                    currentUDPBuffer[i]  = (UDP_Receive_Buffer[4*i] & 0x000000ff) | (((signed int)UDP_Receive_Buffer[4*i+1] & 0xff) << 8) | (((signed int)UDP_Receive_Buffer[4*i+2]& 0xff)  << 16)| (((signed int)UDP_Receive_Buffer[4*i+3]& 0xff)<< 24) ;
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                flagSound = true;
+                //BIN1(0);
+                
                 if (UDP_bytes_received > sizeof (UDP_Receive_Buffer) - 1) {
                     SYS_CONSOLE_PRINT("\r\nClient: Bytes discarded %u\n\r", UDP_bytes_received - sizeof (UDP_Receive_Buffer) - 1);
                     TCPIP_UDP_Discard(appData.clientSocket);
@@ -260,6 +293,15 @@ void _UDP_ClientTasks() {
                 }
                 UDP_bytes_recues = UDP_bytes_received;
                 UDP_Receive_Packet = true;
+                // Byte de controle des effets et instruments
+//                if ((UDP_Receive_Buffer[0] && 0x01) == 0x01)
+//                {
+//                    ++instr;
+//                    if (instr > 5)
+//                        instr = 0;
+//                    flagInstr = true;
+//                }
+                    
 //                SYS_CONSOLE_PRINT("Client received: Derniere moyenne =  ");
 //                if(strcmp(UDP_Receive_Buffer,UDP_Send_Buffer) == 0){
 //                    SYS_CONSOLE_PRINT("Same shit bro\r\n");
@@ -272,8 +314,8 @@ void _UDP_ClientTasks() {
 //                    SYS_CONSOLE_PRINT("X: %d\tY: %d\tZ: %d\r\n\n\n", UDP_Receive_Buffer_Int[39],UDP_Receive_Buffer_Int[79],UDP_Receive_Buffer_Int[119]);
 //                }
 //                else{
-//                    for(i = 0; i < 40; i++){
-//                        SYS_CONSOLE_PRINT("%d,%d,%d\r\n", UDP_Receive_Buffer_Int[i],UDP_Receive_Buffer_Int[i+40],UDP_Receive_Buffer_Int[i+80]);
+//                    for(i = 0; i < SIG_LEN; i++){
+//                        SYS_CONSOLE_PRINT("%d ", currentUDPBuffer[i]);
 //                    }
 //                    
 //                }
@@ -365,14 +407,14 @@ void _UDP_ServerTasks(void) {
 
                 if (rxed<sizeof (UDP_Server_Receive_Buffer) - 1) UDP_Server_Receive_Buffer[rxed] = 0;
 
-                SYS_CONSOLE_PRINT("\r\nServer: \tReceived a message of length %d", rxed);
+//                SYS_CONSOLE_PRINT("\r\n Server: \tReceived a message of length %d", rxed);
 
-                SYS_CONSOLE_PRINT("\r\nServer Received: ");
+//                SYS_CONSOLE_PRINT("\r\n Server Received: ");
 //                if(strcmp(UDP_Server_Receive_Buffer,UDP_Send_Buffer) == 0){
 //                    SYS_CONSOLE_PRINT("Same shit bro\r\n");
 //                }
 //                else{
-                    SYS_CONSOLE_PRINT("%s\r\n", UDP_Server_Receive_Buffer);
+//                    SYS_CONSOLE_PRINT("%s \r\n", UDP_Server_Receive_Buffer);
 //                }               
                 // Transfer the data out of our local processing buffer and into the TCP TX FIFO.
                 TCPIP_UDP_ArrayPut(appData.serverSocket, UDP_Server_Receive_Buffer, wCurrentChunk);

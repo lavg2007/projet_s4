@@ -360,5 +360,7 @@ build/default/production/_ext/1360937237/UDP_app.o:  \
  ../src/system_config/default/framework/tcpip/tftps.h  \
  ../src/system_config/default/framework/driver/ethmac/drv_ethmac.h  \
  ../src/main.h  \
+../src/app_commands.h  \
 ../src/config.h  \
-../src/app_commands.h 
+../src/main.h  \
+ ../src/tmr5.h 

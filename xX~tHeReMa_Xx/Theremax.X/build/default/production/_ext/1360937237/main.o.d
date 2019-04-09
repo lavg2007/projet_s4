@@ -370,12 +370,13 @@ build/default/production/_ext/1360937237/main.o:  \
  ../src/system_config/default/framework/driver/spi/src/drv_spi_variant_mapping.h  \
  ../src/../Theremax.X/swt.h  \
 ../src/UDP_app.h  \
-../src/led.h  \
-../src/config.h  \
- ../src/lcd.h  \
 ../src/app_commands.h  \
+ ../src/led.h  \
+../src/config.h  \
+../src/lcd.h  \
 ../src/tmr5.h  \
 ../src/tmr3.h  \
  ../src/oc1.h  \
 ../src/i2c.h  \
-../src/pin_manager.h 
+../src/pin_manager.h  \
+ ../src/../Theremax.X/btn.h 
