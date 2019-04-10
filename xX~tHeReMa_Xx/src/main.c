@@ -83,6 +83,7 @@ bool swapBuffers, flagCap;
 static bool btnDb;
 int32_t stabFreq; // valeur de sortie du capteur de frequence
 int32_t stabAmp; // valeur de sortie du capteur d'amplitude
+int countSound;
 
 
 // *****************************************************************************
@@ -355,7 +356,8 @@ int main(void) {
         // swap des buffers de génération
         if(swapBuffers)
         {
-           
+//            SYS_CONSOLE_PRINT("%d\r\n",countSound);
+
             
             //LED_ToggleValue(1);
 ////            IEC0bits.T2IE = false;
@@ -484,7 +486,7 @@ int main(void) {
             flagCap = false;
             vf_016 = val_016(stabFreq);
             va_016 = val_016(stabAmp);
-//            NVBA++;
+            NVBA++;
         }
         
             

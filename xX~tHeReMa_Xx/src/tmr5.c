@@ -78,7 +78,8 @@
   Remarks:
     None.
 */
-static int counter, countSound;
+extern int countSound;
+static int counter;
 int testBuffer[1024];
 int phase;
 bool flagCap;
@@ -109,8 +110,11 @@ void TMR5_Initialize (void)
     instr = 0;
     flagCap = false;
     phase = 0;
+    
     TMR5 = 0x0;
     // Period = 0.0000104167 s; Frequency = 192000000 Hz; PR5 2001; 
+//    PR5 = 10000; //bon je suis pas fier, mais avec cette frequence la, tout roule
+    // et les glichs sont presquent absent
     PR5 = 1000;
     // TCKPS 1:1; T32 16 Bit; TCS PBCLK; SIDL disabled; TGATE disabled; ON enabled; 
     T5CON = 0x8000;
@@ -124,15 +128,16 @@ void TMR5_Initialize (void)
 
 void __ISR(_TIMER_5_VECTOR, IPL1AUTO) _T5Interrupt (  )
 {
-//    BIN1(1);
+    int wtf;
+    BIN1(1);
     phase = phase + LUT_phase[stabFreq];
-    stabAmp = 1300;
+//    stabAmp = 1300;
     if(phase >= SINE_RANGE)
         phase -= SINE_RANGE;
     switch (instr)
     {
         case 0:
-            currentInBuffer[bufferCount] = LUT_sin[phase] * stabAmp/1300;   
+            currentInBuffer[bufferCount] = LUT_sin[phase] * stabAmp/1300 ;   
 //            currentInBuffer[bufferCount] = 0;   
             break;
         case 1:
@@ -165,7 +170,9 @@ void __ISR(_TIMER_5_VECTOR, IPL1AUTO) _T5Interrupt (  )
         }else {
             currentUDPBuffer = UDP_Receive_Buffer1;
             previousUDPBuffer = UDP_Receive_Buffer2;
-        }
+//            SYS_CONSOLE_PRINT("%2\r\n");
+        }        
+
         countSound = 0;
 //        BIN1(0);
     }
@@ -183,9 +190,10 @@ void __ISR(_TIMER_5_VECTOR, IPL1AUTO) _T5Interrupt (  )
     }
     bufferCount += 1;
     counter += 1;
-//    BIN1(0);
     tmr5_obj.timerElapsed = true;
     IFS0CLR= 1 << _IFS0_T5IF_POSITION;
+    BIN1(0);
+
 }
 
 void TMR5_Period16BitSet( uint16_t value )
